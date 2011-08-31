@@ -1,5 +1,4 @@
-## HTML5 Canvas - Experiment with particles
-
+# HTML5 Canvas - Experiment with particles
 
 Found at [HTML5 Pro][1] and soon at [Chrome Experiments][2].
 
