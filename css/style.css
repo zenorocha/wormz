@@ -8,13 +8,14 @@ body {
 
 #top {
     width: 100%;
-    height: 76px;
+    height: 70px;
     background: url(../img/bg-header.jpg);
     position: absolute;
     top: 0;
     left: 0;
     z-index: 2;
     display: inline;
+    border-bottom: 2px solid #c4fa09;
 }
 
 #white-spot {
@@ -26,23 +27,23 @@ body {
     margin: 0 0 0 -512px;
     background: url(../img/white-spot.png) no-repeat;
     z-index: 1;
+    display: none;
 }
 
 #logo {
     float: left;
-    margin: 0;
 }
 
 #html5 {
     float: right;
-    margin: 0;
+    margin: 0 10px 0 0;
 }
 
 #all{
 	width:870px;
 	height:550px;
 	display: block;
-	margin: 150px auto;
+	margin: 120px auto;
 	z-index: 3;
 	position: relative;
 }
