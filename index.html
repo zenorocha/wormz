@@ -8,6 +8,8 @@
   
 	<link rel="stylesheet" href="css/style.css">
 	<script src="js/libs/modernizr-2.0.6.min.js"></script>
+	
+	<link href="http://fonts.googleapis.com/css?family=Maven+Pro:400,700" rel="stylesheet" type="text/css">
 
 </head>
 <body >
@@ -26,20 +28,21 @@
 			</div>
 			<div class="gp" >
 				<div class="op" >
-					<div class="bar">SPEED<input class="b" id="spd_b" type="range"  min="0.5" max="7" value="3.0" step="0.1"/></div>
-					<div class="bar">EFFECT<input class="b" id="mag_b" type="range"  min="0.0" max="3" value="2" step="0.01"/></div>
-					<div class="bar">RANDOM<input class="b" id="rdn_b" type="range"  min="0.0" max="2" value="1.0" step="0.01" /></div>
-					<div class="bar">TRAIL<input class="b" id="ras_b" type="range"  min="0.15" max="0.8" value="0.4" step="0.01"/></div>
-					<div class="bar">AMOUNT<input class="b" id="num_b" type="range"  min="1" max="6000" value="3000" /></div>
+					<div class="bar"><label>Speed</label><input class="b" id="spd_b" type="range"  min="0.5" max="7" value="3.0" step="0.1"/></div>
+					<div class="bar"><label>Effect</label><input class="b" id="mag_b" type="range"  min="0.0" max="3" value="2" step="0.01"/></div>
+					<div class="bar"><label>Random</label><input class="b" id="rdn_b" type="range"  min="0.0" max="2" value="1.0" step="0.01" /></div>
+					<div class="bar"><label>Trail</label><input class="b" id="ras_b" type="range"  min="0.15" max="0.8" value="0.4" step="0.01"/></div>
+					<div class="bar"><label>Amount</label><input class="b" id="num_b" type="range"  min="1" max="6000" value="3000" /></div>
 				</div>
 				<div class="op" >
-					<div class="bar">R<input class="b" id="r_b" type="range"  min="0" max="255" value="190" step="1"/></div>
-					<div class="bar">G<input class="b" id="g_b" type="range"  min="0" max="255" value="255" step="1"/></div>
-					<div class="bar">B<input class="b" id="b_b" type="range"  min="0" max="255" value="0" step="1"/></div>
+					<div class="bar"><label>R</label><input class="b" id="r_b" type="range"  min="0" max="255" value="190" step="1"/></div>
+					<div class="bar"><label>G</label><input class="b" id="g_b" type="range"  min="0" max="255" value="255" step="1"/></div>
+					<div class="bar"><label>B</label><input class="b" id="b_b" type="range"  min="0" max="255" value="0" step="1"/></div>
 				</div>
-				<div class="op" >
-					
+				
+				<div class="op" >	
 				</div>
+				
 				<<div class="op" >				
 					<input id="rtd" type="submit" value="Generate"  ONCLICK="act();"/>
 					<input id="pp" type="submit" value="Pause Slide"  ONCLICK="play_pause(this);"/>

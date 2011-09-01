@@ -4,6 +4,9 @@ body {
     background: url(../img/bg.jpg);
     text-align: center;
     margin: 0;
+    text-transform: uppercase;
+    font-family: 'Maven Pro', cursive;
+    /*color: ;*/
 }
 
 #top {
@@ -27,7 +30,6 @@ body {
     margin: 0 0 0 -512px;
     background: url(../img/white-spot.png) no-repeat;
     z-index: 1;
-    display: none;
 }
 
 #logo {
@@ -48,7 +50,7 @@ body {
 	position: relative;
 }
 .bar{
-	background:#232;
+	background:#353638;
 	display:block;
 	width:280px;
 	margin:5px;
@@ -61,8 +63,8 @@ body {
 }
 #cont{
 	background:#000;
-	//position:relative;
-	//display:none;
+	/*position:relative;
+	display:none;*/
 	display:block;
 	margin: 10px;
 	padding:10px;
@@ -83,14 +85,14 @@ body {
 }
 .gpr{
 	float:right;
-	background:#0A110A;
+	background:#0f0f11;
 	display:block;
 }
 .gps{
 	float:right;
-	background:#050905;
+	background:#0f0f11;
 	display:block;
-	padding:10px;
+	padding: 0 10px 10px;
 }
 #slide{
 	background:#000;
@@ -108,9 +110,15 @@ body {
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	user-select: none;
+	padding: 10px 0;
 }
 #pp{
 	display:none;
+	margin-bottom: 10px;
+}
+
+#rtd {
+    margin-bottom: 10px;
 }
 .thumbnail{
 	display:block;
@@ -118,7 +126,7 @@ body {
 	height:60px;
 	width:60px;
 	background:#FFF;
-	border:1px solid #232;
+	border:1px solid #0f0f11;
 	margin-top:2px;
 	cursor: move;
 }
