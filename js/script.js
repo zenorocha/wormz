@@ -7,7 +7,7 @@ var imagesCut
 var container="group";
 
 var insert_pos;
-var images = ["img/a.jpg","img/b.jpg","img/c.jpg","img/d.jpg"]
+var images = ["img/a.jpg","img/b.jpg","img/c.jpg","img/d.jpg","img/e.jpg"]
 //get a reference to the canvas
 var ctx = document.getElementById("canvas").getContext("2d");
 var spd_b = document.getElementById("spd_b");
