@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
 
+	<meta charset="utf-8">
+
     <title>dots . html5 canvas experiment</title>
     <meta name="author" content="Zanoni Miranda e Zeno Rocha">
     <meta name="description" content="HTML5 Canvas Experiment">
   
 	<link rel="stylesheet" href="css/style.css">
-	<script src="js/libs/modernizr-2.0.6.min.js"></script>
 	
 	<link href="http://fonts.googleapis.com/css?family=Maven+Pro:400,700" rel="stylesheet" type="text/css">
 
@@ -57,9 +58,20 @@
 			</div>
 		</div>
 	</div>
+
+  <script>
+    var _gaq=[['_setAccount','UA-4114546-25'],['_trackPageview'],['_trackPageLoadTime']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
 </body>
 
-<!-- Descobrir porque importar fora do <body> funciona e dentro do <head> não -->
-<script src="js/script.js"></script>
+<!-- Todo: Descobrir porque importar fora do <body> funciona e dentro do <head> não -->
+  
+  <!-- scripts concatenated and minified via build script -->
+  <script defer src="js/dots.js"></script>
+  <!-- end scripts -->
 
 </html>

@@ -7,7 +7,7 @@ var imagesCut
 var container="group";
 
 var insert_pos;
-var images = ["../img/a.jpg","../img/b.jpg","../img/c.jpg","../img/d.jpg"]
+var images = ["img/a.jpg","img/b.jpg","img/c.jpg","img/d.jpg","img/e.jpg"]
 //get a reference to the canvas
 var ctx = document.getElementById("canvas").getContext("2d");
 var spd_b = document.getElementById("spd_b");
@@ -70,9 +70,9 @@ function creatSlide(){
 	var groupWidth=26+82*images.length;
 	var res='';
 	for(var i=0;i<images.length;i++){
-		res+='<div pos-data='+i+' class="between"></div><img draggable="true" pos-data='+i+'  class="thumbnail" src="'+images[i]+'" />';
+		res+='<div data-pos='+i+' class="between"></div><img draggable="true" data-pos='+i+'  class="thumbnail" src="'+images[i]+'" />';
 	}
-	res+='<div pos-data='+images.length+' class="between"></div>';
+	res+='<div data-pos='+images.length+' class="between"></div>';
 	document.getElementById(container).innerHTML=res	
 	document.getElementById(container).style.width=groupWidth;
 }
@@ -87,11 +87,11 @@ function loadImage(file) {
 }
 function preload(fileURL){	
 	if(hoverObj){
-		state=hoverObj.getAttribute("pos-data");
+		state=hoverObj.getAttribute("data-pos");
 		if(hoverObj.className=="thumbnail"){
-			images[hoverObj.getAttribute("pos-data")]=fileURL;
+			images[hoverObj.getAttribute("data-pos")]=fileURL;
 		}else{
-			images.splice(hoverObj.getAttribute("pos-data"),0,fileURL);
+			images.splice(hoverObj.getAttribute("data-pos"),0,fileURL);
 		}
 	}else{
 		state=images.length;
@@ -134,16 +134,16 @@ function dragEnd(evt) {
 	creatSlide()
 }
 function dragStart(evt){
-	cut=evt.target.getAttribute("pos-data");
+	cut=evt.target.getAttribute("data-pos");
 	console.log(cut)
-	imagesCut=images[evt.target.getAttribute("pos-data")]
-	imageDataCut=imageData[evt.target.getAttribute("pos-data")]
-	dataCut=data[evt.target.getAttribute("pos-data")]
+	imagesCut=images[evt.target.getAttribute("data-pos")]
+	imageDataCut=imageData[evt.target.getAttribute("data-pos")]
+	dataCut=data[evt.target.getAttribute("data-pos")]
 	
 	evt.dataTransfer.setData('text/html', evt.target.src);
-	images.splice(evt.target.getAttribute("pos-data"),1)
-	imageData.splice(evt.target.getAttribute("pos-data"),1)
-	data.splice(evt.target.getAttribute("pos-data"),1)
+	images.splice(evt.target.getAttribute("data-pos"),1)
+	imageData.splice(evt.target.getAttribute("data-pos"),1)
+	data.splice(evt.target.getAttribute("data-pos"),1)
 }
 function dragOver(evt) {	
 	if(evt.target.id!="group"){
@@ -169,19 +169,19 @@ function drop(evt){
 		if(evt.dataTransfer.files.length>0){
 			loadImage(evt.dataTransfer)
 		}else{
-			if((evt.target.className=="thumbnail")&&(cut!=evt.target.getAttribute("pos-data"))){
-				var position=evt.target.getAttribute("pos-data")
+			if((evt.target.className=="thumbnail")&&(cut!=evt.target.getAttribute("data-pos"))){
+				var position=evt.target.getAttribute("data-pos")
 				if(position>cut)position--;
 				imageData.splice(cut,0,imageData[position])
 				data.splice(cut,0,data[position]);
 				images.splice(cut,0,images[position]);
-				imageData.splice(evt.target.getAttribute("pos-data"),1)
-				data.splice(evt.target.getAttribute("pos-data"),1);
-				images.splice(evt.target.getAttribute("pos-data"),1);
+				imageData.splice(evt.target.getAttribute("data-pos"),1)
+				data.splice(evt.target.getAttribute("data-pos"),1);
+				images.splice(evt.target.getAttribute("data-pos"),1);
 			}
-			imageData.splice(evt.target.getAttribute("pos-data"),0,imageDataCut)
-			data.splice(evt.target.getAttribute("pos-data"),0,dataCut);
-			images.splice(evt.target.getAttribute("pos-data"),0,imagesCut)	
+			imageData.splice(evt.target.getAttribute("data-pos"),0,imageDataCut)
+			data.splice(evt.target.getAttribute("data-pos"),0,dataCut);
+			images.splice(evt.target.getAttribute("data-pos"),0,imagesCut)	
 			creatSlide();
 		}
 	}
