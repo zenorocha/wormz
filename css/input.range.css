@@ -1,8 +1,8 @@
 
 /* slider root element */
 .slider { 
-    background:#3C72E6 url(../../../img/gradient/h30.png) repeat-x 0 0; 
-    height:9px; 
+    background:#c4fa09; 
+    height:2px; 
     position:relative; 
     cursor:pointer;
     border:1px solid #333;
@@ -10,9 +10,8 @@
     float: right; 
     clear: right;
     margin-top:10px;
-    -moz-border-radius:5px; 
-    -webkit-border-radius:5px; 
-    -moz-box-shadow:inset 0 0 8px #000;
+     
+    /*-moz-box-shadow:inset 0 0 8px #000;*/
     margin: 4px 10px;
 }
 
@@ -26,17 +25,16 @@
 
 /* drag handle */
 .handle { 
-    background:#fff url(../../../img/gradient/h30.png) repeat-x 0 0; 
-    height:16px;
-    width:16px;
-    top:-6px;
+    background:#fff; 
+    height:12px;
+    width:12px;
+    top:-5px;
     position:absolute; 
     display:block; 
-    margin-top:1px;
-    border:1px solid #000;
+    /*border:1px solid #000;*/
     cursor:move;
-    /*-moz-box-shadow:0 0 6px #000;
-    -webkit-box-shadow:0 0 6px #000;*/
+    -moz-box-shadow:0 0 6px #000;
+    -webkit-box-shadow:0 0 6px #000;
     -moz-border-radius:14px;
     -webkit-border-radius:14px;
     border-radius:14px;  
@@ -45,7 +43,7 @@
 
 /* the input field */
 .range {
-    border:1px inset #ddd;
+    border:1px solid #ddd;
     float:left;
     font-size:20px;
     margin:0 0 0 15px;
