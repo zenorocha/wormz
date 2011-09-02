@@ -1,3 +1,6 @@
+var width=600;
+var height=600;
+
 var slide=true	
 var cut;
 
@@ -7,7 +10,7 @@ var imagesCut
 var container="group";
 
 var insert_pos;
-var images = ["img/a.jpg","img/b.jpg","img/c.jpg","img/d.jpg","img/e.jpg"]
+var images = ["img/a.jpg","img/bat.jpg","img/c.jpg","img/google.jpg","img/z.jpg"]
 //get a reference to the canvas
 var ctx = document.getElementById("canvas").getContext("2d");
 var spd_b = document.getElementById("spd_b");
@@ -102,14 +105,14 @@ function preload(fileURL){
 }
 var img = new Image();
 img.onload = function(){
-	ctx.drawImage(img, 0, 0);	
+	ctx.drawImage(img, 0, 0,width,height);	
 	imageData.splice(state,0,ctx.getImageData(0, 0, canvas.width, canvas.height))
 	data.splice(state,0,imageData[state].data);
 	state++;
 	if(pos>=imageData.length){pos=0;}		
 	loading();
 	ctx.fillStyle = "rgba(0, 0, 0, 1)";
-	ctx.fillRect(0,0,500,500);		
+	ctx.fillRect(0,0,width,height);		
 }
 function dragOut(evt) {		
 	if(hoverObj){
@@ -207,7 +210,7 @@ function go(){
 			for(var j=0;j<na;j++){
 				var px=angs[(j*2)];//Math.round(Math.cos(ang*Math.PI/180)*10);
 				var py=angs[(j*2)+1];//Math.round(Math.sin(ang*Math.PI/180)*10);
-				if(((x+px>0)&&(x+px<500))&&((y+py>0)&&(y+py<500))){	
+				if(((x+px>0)&&(x+px<width))&&((y+py>0)&&(y+py<height))){	
 					var p=(((py+y)*(imdw)) + ((px+x)*4));
 					var ppp=(data[pos][p]+data[pos][p+1]+data[pos][p+2])/3;
 					rx+=(px/100)*((255-ppp)/200);
@@ -229,17 +232,17 @@ function go(){
 		this.vx*=-1;
 		this.x=0;
 	}
-	if((x>500)){
+	if((x>width)){
 		this.vx*=-1;
-		this.x=500;
+		this.x=width;
 	}
 	if((y<0)){
 		this.vy*=-1;
 		this.y=0;
 	}
-	if((y>500)){
+	if((y>height)){
 		this.vy*=-1;
-		this.y=500;
+		this.y=height;
 	}	
 	this.x+=this.vx*spd*1.5;
 	this.y+=this.vy*spd*1.5;
@@ -276,15 +279,15 @@ loading()
 creatSlide();
 d=new Array();
 for(var yy=0;yy<20000;yy++){
-	d.push(new dot(Math.random()*500,Math.random()*500));
+	d.push(new dot(Math.random()*width,Math.random()*height));
 }
 ctx.fillStyle = "rgba(0, 0, 0, 1)";
-ctx.fillRect(0,0,500,500);
+ctx.fillRect(0,0,width,height);
 function act(){
 	document.getElementById("pp").style.display="inline"
 	document.getElementById("rtd").value="Regenerate"
 	ctx.fillStyle = "rgba(0, 0, 0, 1)";
-	ctx.fillRect(0,0,500,500);		
+	ctx.fillRect(0,0,width,height);		
 	spd=((spd_b.value*spd_b.value)*0.012)+spd_b.value*0;
 	mag=((mag_b.value*mag_b.value)*2)+mag_b.value*0.0;
 	rdn=(rdn_b.value*rdn_b.value);
@@ -294,8 +297,11 @@ function act(){
 	cg=g_b.value;
 	cb=b_b.value;
 	
+	
+	
+	
 	for(var xx=0;xx<num;xx++){
-		d[xx].x=d[xx].y=250;
+		d[xx].x=d[xx].y=width/2;
 		d[xx].lx=d[xx].ly=270;
 	}
 	if(int_id!=-1)
@@ -331,14 +337,14 @@ function ani(){
 		lastt=new Date();
 	}*/
 	tim++;
-	if(tim>200){
+	if(tim>250){
 		if(slide)
 			pos++;
 		if(pos>=imageData.length){pos=0;}
 		tim=0;
 	}
 	ctx.fillStyle = "rgba(0, 0, 0, "+ras+")";
-	ctx.fillRect(0,0,500,500);
+	ctx.fillRect(0,0,width,height);
 	var col=(parseInt(cb)+parseInt(cg)*256+parseInt(cr)*256*256).toString(16);		
 	while(col.length<6){
 		col="0".concat(col);
