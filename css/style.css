@@ -53,13 +53,20 @@ body {
 	background:#353638;
 	display:block;
 	width:280px;
+	height: 20px;
 	margin:5px;
 	padding:5px; 
 	text-align:left;
 	font-weight: bold;
 }
+
+.bar label {
+    float: left;
+}
+
 .b{
 	float:right;
+	display: none;
 }
 #cont{
 	background:#000;
