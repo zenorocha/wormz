@@ -156,12 +156,20 @@ p {
 	display:block;
 	height:60px;
 	width:60px;
-	background:#FFF;
-	border:1px solid #0f0f11;
-	margin-top:2px;
+	background:#000;
 	cursor: move;
 	margin: 0 auto;
+	border: 2px solid #CECDCD;
+	padding: 3px;
+	-webkit-transition: border 0.5s linear;
+	-moz-transition: border 0.5s linear;
+	transition: border 0.5s linear
 }
+
+.selectedThumbnail {
+	border: 2px solid #c4fa09;
+}	
+
 .between{
 	display:block;
 	height:20px;
