@@ -1,6 +1,6 @@
-html, body {
+/*html, body {
     height: 100%;
-}
+}*/
 
 body {
     background: url(../img/bg.jpg);
@@ -11,7 +11,7 @@ body {
 
 p {
     color: #FFF;
-    font-size: 22px;
+    font-size: 20px;
     margin: 0 0 10px;
 }
 
@@ -27,6 +27,31 @@ p {
     border-bottom: 2px solid #c4fa09;
 }
 
+#bottom {
+    width: 100%;
+    height: 30px;
+    background: url(../img/bg-header.jpg);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    display: inline;
+    border-top: 2px solid #c4fa09;
+}
+
+#bottom p {
+    padding: 5px 15px;
+    margin-top: -7px;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
 #logo {
     float: left;
 }
@@ -40,14 +65,16 @@ p {
 	display: block;
 	margin: 90px auto;
 	z-index: 3;
-	position: relative;
+	/*position: relative;*/
+	width: 620px;
+	height: 620px;
 }
 .bar{
 	background: url(../img/bg-header.jpg);
 	display: block;
-	width: 280px;
+	width: 210px;
 	height: 20px;
-	margin: 5px;
+	margin: 5px 0 5px 5px;
 	padding: 10px; 
 }
 
@@ -55,7 +82,7 @@ p {
     float: left;
     color: #f2f2f2;
     text-transform: lowercase;
-    font-size: 24px;
+    font-size: 20px;
     margin: -10px 0 0 0;
 }
 
@@ -64,15 +91,24 @@ p {
 	display: none;
 }
 #cont{
-	display:block;
-	padding:10px;
-	width:500px;
-	height:500px;
+	
+	margin-left: 60px;
+	background: url(../img/bg-header.jpg);
+    width: 620px;
+    height: 620px;
+	
+}
+
+#canvas {
+    display:block;
+    padding:10px;
+    width:600px;
+    height:600px;
 }
 
 .op{
 	display:block;
-	padding:5px;
+	padding: 5px 0;
 }
 .gp{
 	position: absolute;
@@ -80,22 +116,14 @@ p {
 	left: 0;
 	float: left;
 	display:block;
-	width:310px;
 	margin:10px;
 }
 .gpr{
-    background: url(../img/bg-header.jpg);
-    width: 520px;
-    height: 520px;
-    margin: 0 auto;
-	/*float:right;
-	background:#0f0f11;
-	display:block;*/
 }
 .gps{
 	background: url(../img/bg-header.jpg);
 	display:block;
-	margin: 20px;
+	margin: 20px 15px;
 	position: absolute;
     top: 70px;
     right: 0;
@@ -155,7 +183,7 @@ p {
     position: relative; 
     cursor: pointer;
     border: 1px solid #333;
-    width: 180px;
+    width: 130px;
     float: right; 
     clear: right;
     margin: 8px 10px 4px;
@@ -179,16 +207,7 @@ p {
 }
 
 .range {
-    border: 1px solid #ddd;
-    float: left;
-    font-size: 20px;
-    margin: 0 0 0 15px;
-    padding: 3px 0;
-    text-align: center;
-    width: 50px;
-    -moz-border-radius: 5px; 
-    -webkit-border-radius: 5px;
-    border-radius: 5px;      
+    width: 0;
 }
 
 /* --- Fonts --- */
