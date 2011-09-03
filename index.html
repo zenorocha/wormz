@@ -10,16 +10,7 @@
   
 	<link rel="stylesheet" href="css/style.css">
 	
-	<link href="http://fonts.googleapis.com/css?family=Maven+Pro:400,700" rel="stylesheet" type="text/css">
 	
-	
-	<!-- <script src="js/jquery.tools4.min.js"></script> -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-	<script src="js/jquery.input.range.min.js"></script>
-    
-    <!-- <script src="http://cdn.jquerytools.org/1.2.5/form/jquery.tools.min.js"></script> -->
-     
-    <link rel="stylesheet" type="text/css" href="css/input.range.css"/>
 
 </head>
 <body >
@@ -36,29 +27,6 @@
 			<div id="cont" >
 				<canvas id="canvas" width="600" height="600" ></canvas>
 			</div>
-			<div class="gp" >
-				<div class="op" >
-					<div class="bar"><label>Speed</label><input class="b" id="spd_b" type="range"  min="0.5" max="7" value="3.0" step="0.1"/></div>
-					<div class="bar"><label>Effect</label><input class="b" id="mag_b" type="range"  min="0.0" max="3" value="2" step="0.01"/></div>
-					<div class="bar"><label>Random</label><input class="b" id="rdn_b" type="range"  min="0.0" max="2" value="0.75" step="0.01" /></div>
-					<div class="bar"><label>Trail</label><input class="b" id="ras_b" type="range"  min="0.15" max="0.8" value="0.4" step="0.01"/></div>
-					<div class="bar"><label>Amount</label><input class="b" id="num_b" type="range"  min="1" max="6000" value="3500" /></div>
-				</div>
-				<div class="op" >
-					<div class="bar"><label>R</label><input class="b" id="r_b" type="range"  min="0" max="255" value="190" step="1"/></div>
-					<div class="bar"><label>G</label><input class="b" id="g_b" type="range"  min="0" max="255" value="255" step="1"/></div>
-					<div class="bar"><label>B</label><input class="b" id="b_b" type="range"  min="0" max="255" value="0" step="1"/></div>
-				</div>
-				
-				<div class="op" >	
-				</div>
-				
-				<<div class="op" >				
-					<input id="rtd" type="submit" value="Generate"  ONCLICK="act();"/>
-					<input id="pp" type="submit" value="Pause Slide"  ONCLICK="play_pause(this);"/>
-					<!--<input id="timer" type="text"/>-->
-				</div>
-			</div>
 		</div>
 		<div class="gps" >
 			<div id="slide" >				
@@ -68,9 +36,31 @@
 		</div>
 	</div>
 	
-	<script> 
-        $(":range").rangeinput();
-    </script>  
+	<div class="gp" >
+                <div class="op" >
+                    <div class="bar"><label>Speed</label><input class="b" id="spd_b" type="range"  min="0.5" max="7" value="3.0" step="0.1"/></div>
+                    <div class="bar"><label>Effect</label><input class="b" id="mag_b" type="range"  min="0.0" max="3" value="2" step="0.01"/></div>
+                    <div class="bar"><label>Random</label><input class="b" id="rdn_b" type="range"  min="0.0" max="2" value="0.75" step="0.01" /></div>
+                    <div class="bar"><label>Trail</label><input class="b" id="ras_b" type="range"  min="0.15" max="0.8" value="0.4" step="0.01"/></div>
+                    <div class="bar"><label>Amount</label><input class="b" id="num_b" type="range"  min="1" max="6000" value="3500" /></div>
+                </div>
+                <div class="op" >
+                    <div class="bar"><label>Red</label><input class="b" id="r_b" type="range"  min="0" max="255" value="190" step="1"/></div>
+                    <div class="bar"><label>Green</label><input class="b" id="g_b" type="range"  min="0" max="255" value="255" step="1"/></div>
+                    <div class="bar"><label>Blue</label><input class="b" id="b_b" type="range"  min="0" max="255" value="0" step="1"/></div>
+                </div>
+                
+                <div class="op" >   
+                </div>
+                
+                <div class="op">                
+                    <input id="rtd" type="submit" value="Generate"  ONCLICK="act();"/>
+                    <input id="pp" type="submit" value="Pause Slide"  ONCLICK="play_pause(this);"/>
+                    <!--<input id="timer" type="text"/>-->
+                </div>
+            </div>
+	
+	
 
   <script>
     var _gaq=[['_setAccount','UA-4114546-25'],['_trackPageview'],['_trackPageLoadTime']];
@@ -78,13 +68,22 @@
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
+  
+  
 
 </body>
 
-<!-- Todo: Descobrir porque importar fora do <body> funciona e dentro do <head> não -->
+    <!-- Todo: Descobrir porque importar fora do <body> funciona e dentro do <head> não -->
   
-  <!-- scripts concatenated and minified via build script -->
-  <script defer src="js/dots.js"></script>
-  <!-- end scripts -->
+    <!-- scripts concatenated and minified via build script -->
+    <script defer src="js/dots.js"></script>
+    <!-- end scripts -->
+  
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script src="js/jquery.input.range.min.js"></script>
+    
+    <script> 
+        $(":range").rangeinput();
+    </script>  
 
 </html>
