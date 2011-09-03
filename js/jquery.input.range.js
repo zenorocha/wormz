@@ -60,9 +60,9 @@
 	var doc, draggable;
 	
 	$.fn.drag = function(conf) {
-		
+
 		// disable IE specialities
-		document.ondragstart = function () { return false; };
+		//document.ondragstart = function () { return false; };
 		
 		conf = $.extend({x: true, y: true, drag: true}, conf);
 	

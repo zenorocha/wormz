@@ -137,6 +137,7 @@ function dragEnd(evt) {
 	creatSlide()
 }
 function dragStart(evt){
+    console.log('drag start');
 	cut=evt.target.getAttribute("data-pos");
 	console.log(cut)
 	imagesCut=images[evt.target.getAttribute("data-pos")]
