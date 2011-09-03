@@ -70,14 +70,14 @@ function play_pause(e){
 	}
 }
 function creatSlide(){	
-	var groupWidth=26+82*images.length;
+	var groupHeight=26+82*images.length;
 	var res='';
 	for(var i=0;i<images.length;i++){
 		res+='<div data-pos='+i+' class="between"></div><img draggable="true" data-pos='+i+'  class="thumbnail" src="'+images[i]+'" />';
 	}
 	res+='<div data-pos='+images.length+' class="between"></div>';
 	document.getElementById(container).innerHTML=res	
-	document.getElementById(container).style.width=groupWidth;
+	document.getElementById(container).style.height=groupHeight;
 }
 function loadImage(file) {
 	f=file.files[0];
@@ -149,6 +149,7 @@ function dragStart(evt){
 	data.splice(evt.target.getAttribute("data-pos"),1)
 }
 function dragOver(evt) {	
+    console.log('drag over');
 	if(evt.target.id!="group"){
 		if(hoverObj){
 			if(hoverObj.className=="thumbnail"){

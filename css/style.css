@@ -1,11 +1,18 @@
-body {
-    width: 100%;
+html, body {
     height: 100%;
+}
+
+body {
     background: url(../img/bg.jpg);
     text-align: center;
     margin: 0;
     font-family: 'CarnalaRegular', serif;
-    /*color: ;*/
+}
+
+p {
+    color: #FFF;
+    font-size: 22px;
+    margin: 0 0 10px;
 }
 
 #top {
@@ -20,18 +27,6 @@ body {
     border-bottom: 2px solid #c4fa09;
 }
 
-#white-spot {
-    width: 1024px;
-    height: 455px;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    margin: 0 0 0 -512px;
-    background: url(../img/white-spot.png) no-repeat;
-    z-index: 1;
-    display: none;
-}
-
 #logo {
     float: left;
 }
@@ -42,10 +37,8 @@ body {
 }
 
 #all{
-	width:970px;
-	height:550px;
 	display: block;
-	margin: 80px auto;
+	margin: 90px auto;
 	z-index: 3;
 	position: relative;
 }
@@ -64,7 +57,6 @@ body {
     text-transform: lowercase;
     font-size: 24px;
     margin: -10px 0 0 0;
-    cursor: text;
 }
 
 .b{
@@ -72,15 +64,10 @@ body {
 	display: none;
 }
 #cont{
-	background:#000;
-	/*position:relative;
-	display:none;*/
 	display:block;
-	margin: 10px;
 	padding:10px;
-	width:600px;
-	height:600px;
-	float:left;
+	width:500px;
+	height:500px;
 }
 
 .op{
@@ -97,23 +84,27 @@ body {
 	margin:10px;
 }
 .gpr{
-	float:right;
+    background: url(../img/bg-header.jpg);
+    width: 520px;
+    height: 520px;
+    margin: 0 auto;
+	/*float:right;
 	background:#0f0f11;
-	display:block;
+	display:block;*/
 }
 .gps{
-	float:right;
-	background:#0f0f11;
+	background: url(../img/bg-header.jpg);
 	display:block;
-	padding: 0 10px 10px;
+	margin: 20px;
+	position: absolute;
+    top: 70px;
+    right: 0;
+    width: 110px;
+    height:auto;
 }
 #slide{
-	background:#000;
-	display:block;
-	padding:5px;
-	width:940px;
-	height:85px;
-	float:left;
+	display: block;
+	padding: 5px;
 	overflow: auto;
 }
 #group{
@@ -135,21 +126,19 @@ body {
 }
 .thumbnail{
 	display:block;
-	float:left;
 	height:60px;
 	width:60px;
 	background:#FFF;
 	border:1px solid #0f0f11;
 	margin-top:2px;
 	cursor: move;
+	margin: 0 auto;
 }
 .between{
 	display:block;
-	float:left;
-	height:60px;
-	width:20px;
-	background:#000;
-	margin-top:2px;		
+	height:20px;
+	width:60px;
+	margin: 2px auto;	
 }
 [draggable] {
 	-moz-user-select: none;
