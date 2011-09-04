@@ -72,10 +72,10 @@ function click (e){
 
 function play_pause(e){
 	if(slide){
-		e.value="Play Slide"
+		e.innerHTML="<span>Play Slide</span>"
 		slide=false
 	}else{
-		e.value="Stop Slide"
+		e.innerHTML="<span>Stop Slide</span>"
 		slide=true
 	}
 }
@@ -300,8 +300,8 @@ for(var yy=0;yy<20000;yy++){
 ctx.fillStyle = "rgba(0, 0, 0, 1)";
 ctx.fillRect(0,0,width,height);
 function act(){
-	document.getElementById("pp").style.display="inline"
-	document.getElementById("rtd").value="Regenerate"
+	document.getElementById("pp").style.display="inline-block"
+	document.getElementById("rtd").innerHTML="<span>Regenerate</span>"
 	ctx.fillStyle = "rgba(0, 0, 0, 1)";
 	ctx.fillRect(0,0,width,height);		
 	spd=((spd_b.value*spd_b.value)*0.012)+spd_b.value*0;

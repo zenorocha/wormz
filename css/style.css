@@ -16,6 +16,12 @@ p {
     margin: 0 0 10px;
 }
 
+a {
+	color: #FFF;
+	font-weight: bold;
+	text-decoration: none;
+}
+
 body > #wrap {
 	height: auto; 
 	min-height: 100%;
@@ -35,18 +41,18 @@ body > #wrap {
 
 #bottom {
     width: 100%;
-    height: 30px;
+    height: 35px;
     background: url(../img/bg-header.jpg);
     position: relative;
     z-index: 2;
     border-top: 2px solid #c4fa09;
-	margin-top: -32px;
+	margin-top: -37px;
 	clear:both;
 }
 
 #bottom p {
     padding: 5px 15px;
-    margin-top: -7px;
+    margin-top: -4px;
 }
 
 .left {
@@ -159,7 +165,7 @@ body > #wrap {
 }
 
 #rtd {
-    margin-bottom: 10px;
+    margin: 0 10px 10px 5px;
 }
 .thumbnail{
 	display:block;
@@ -190,6 +196,60 @@ body > #wrap {
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	user-select: none;
+}
+
+/* --- Button --- */
+ 
+.btn {		
+	display: inline-block;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	-webkit-box-shadow: 0 8px 0 #0a0a0a, 0 15px 20px rgba(0,0,0,.35);
+	-moz-box-shadow: 0 8px 0 #0a0a0a, 0 15px 20px rgba(0,0,0,.35);
+	box-shadow: 0 8px 0 #0a0a0a, 0 15px 20px rgba(0,0,0,.35);
+	-webkit-transition: -webkit-box-shadow .2s ease-in-out;
+	-moz-transition: -moz-box-shadow .2s ease-in-out;
+	-o-transition: -o-box-shadow .2s ease-in-out;
+	transition: box-shadow .2s ease-in-out;
+}
+
+.btn span {	
+	display: inline-block;
+	color: #fff;
+	letter-spacing: 1px;
+	padding: 8px 18px 12px;
+	line-height: 1;
+	font-size: 20px;
+	text-shadow: 0 -1px 1px rgba(19,65,88,.8);
+	background: #000000;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0a0a0a), to(#111111));
+	background: -moz-linear-gradient(#0a0a0a, #111111);
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	-webkit-box-shadow: inset 0 -1px 1px #0a0a0a;
+	-moz-box-shadow: inset 0 -1px 1px #0a0a0a;
+	box-shadow: inset 0 -1px 1px #0a0a0a;
+	-webkit-transition: -webkit-transform .2s ease-in-out;
+	-moz-transition: -moz-transform .2s ease-in-out;
+	-o-transition: -o-transform .2s ease-in-out;
+	transition: transform .2s ease-in-out;
+	display: none/inline/block/list-item/run-in/compact/marker;
+	
+}
+
+.btn:active {	
+	-webkit-box-shadow: 0 8px 0 #0a0a0a, 0 12px 10px rgba(0,0,0,.3);
+	-moz-box-shadow: 0 8px 0 #0a0a0a, 0 12px 10px rgba(0,0,0,.3);
+	box-shadow: 0 8px 0 #0a0a0a, 0 12px 10px rgba(0,0,0,.3);
+}
+
+.btn:active span {	
+	-webkit-transform: translate(0, 4px);
+	-moz-transform: translate(0, 4px);
+	-o-transform: translate(0, 4px);
+	transform: translate(0, 4px);
 }
 
 /* --- Slider --- */
