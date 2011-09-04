@@ -163,9 +163,9 @@ p {
 	margin: 0 auto;
 	border: 2px solid #CECDCD;
 	padding: 3px;
-	-webkit-transition: border 0.5s linear;
-	-moz-transition: border 0.5s linear;
-	transition: border 0.5s linear
+	-webkit-transition: border 0.7s linear;
+	-moz-transition: border 0.7s linear;
+	transition: border 0.7s linear
 }
 
 .selectedThumbnail {
