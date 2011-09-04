@@ -1,18 +1,24 @@
-/*html, body {
-    height: 100%;
-}*/
+html, body, #wrap {
+	height: 100%;
+}
 
 body {
     background: url(../img/bg.jpg);
     text-align: center;
     margin: 0;
     font-family: 'CarnalaRegular', serif;
+	position: relative;
 }
 
 p {
     color: #FFF;
     font-size: 20px;
     margin: 0 0 10px;
+}
+
+body > #wrap {
+	height: auto; 
+	min-height: 100%;
 }
 
 #top {
@@ -31,12 +37,11 @@ p {
     width: 100%;
     height: 30px;
     background: url(../img/bg-header.jpg);
-    position: absolute;
-    left: 0;
-    bottom: 0;
+    position: relative;
     z-index: 2;
-    display: inline;
     border-top: 2px solid #c4fa09;
+	margin-top: -32px;
+	clear:both;
 }
 
 #bottom p {
@@ -63,11 +68,12 @@ p {
 
 #all{
 	display: block;
-	margin: 90px auto;
+	margin: 0px auto;
 	z-index: 3;
 	/*position: relative;*/
 	width: 620px;
 	height: 620px;
+	padding: 90px 0 32px 0;
 }
 .bar{
 	background: url(../img/bg-header.jpg);
@@ -132,6 +138,7 @@ p {
     width: 110px;
     height:auto;
 }
+
 #slide{
 	display: block;
 	padding: 5px;

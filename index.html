@@ -14,58 +14,62 @@
 
 </head>
 <body>
+
+	<div id="wrap">
     
-    <header id="top">
-        <img id="logo" src="img/logo.png" alt="Dots - HTML5 Canvas Experiment" />
-        <img id="html5" src="img/html5.png" alt="HTML5" />
-    </header>
+		<header id="top">
+		    <img id="logo" src="img/logo.png" alt="Dots - HTML5 Canvas Experiment" />
+		    <img id="html5" src="img/html5.png" alt="HTML5" />
+		</header>
     
-    <div id="white-spot"></div>
+	    <div id="white-spot"></div>
     
-	<div id="all" >
-		<div class="gpr" >
-			<div id="cont" >
-				<canvas id="canvas" width="600" height="600" ></canvas>
+		<div id="all" >
+			<div class="gpr" >
+				<div id="cont" >
+					<canvas id="canvas" width="600" height="600" ></canvas>
+				</div>
 			</div>
 		</div>
-	</div>
 	
-	<div class="gp" >
-                <div class="op" >
-                    <div class="bar"><label>Speed</label><input class="b" id="spd_b" type="range"  min="0.5" max="7" value="3.0" step="0.1"/></div>
-                    <div class="bar"><label>Effect</label><input class="b" id="mag_b" type="range"  min="0.0" max="3" value="2" step="0.01"/></div>
-                    <div class="bar"><label>Random</label><input class="b" id="rdn_b" type="range"  min="0.0" max="2" value="0.75" step="0.01" /></div>
-                    <div class="bar"><label>Trail</label><input class="b" id="ras_b" type="range"  min="0.15" max="0.8" value="0.4" step="0.01"/></div>
-                    <div class="bar"><label>Amount</label><input class="b" id="num_b" type="range"  min="1" max="6000" value="3500" /></div>
-                </div>
-                <div class="op" >
-                    <div class="bar"><label>Red</label><input class="b" id="r_b" type="range"  min="0" max="255" value="190" step="1"/></div>
-                    <div class="bar"><label>Green</label><input class="b" id="g_b" type="range"  min="0" max="255" value="255" step="1"/></div>
-                    <div class="bar"><label>Blue</label><input class="b" id="b_b" type="range"  min="0" max="255" value="0" step="1"/></div>
-                </div>
-                
-                <div class="op" >   
-                </div>
-                
-                <div class="op">                
-                    <input id="rtd" type="submit" value="Generate"  ONCLICK="act();"/>
-                    <input id="pp" type="submit" value="Pause Slide"  ONCLICK="play_pause(this);"/>
-                    <!--<input id="timer" type="text"/>-->
-                </div>
+		<div class="gp" >
+            <div class="op" >
+                <div class="bar"><label>Speed</label><input class="b" id="spd_b" type="range"  min="0.5" max="7" value="3.0" step="0.1"/></div>
+                <div class="bar"><label>Effect</label><input class="b" id="mag_b" type="range"  min="0.0" max="3" value="2" step="0.01"/></div>
+                <div class="bar"><label>Random</label><input class="b" id="rdn_b" type="range"  min="0.0" max="2" value="0.75" step="0.01" /></div>
+                <div class="bar"><label>Trail</label><input class="b" id="ras_b" type="range"  min="0.15" max="0.8" value="0.4" step="0.01"/></div>
+                <div class="bar"><label>Amount</label><input class="b" id="num_b" type="range"  min="1" max="6000" value="3500" /></div>
+            </div>
+            <div class="op" >
+                <div class="bar"><label>Red</label><input class="b" id="r_b" type="range"  min="0" max="255" value="190" step="1"/></div>
+                <div class="bar"><label>Green</label><input class="b" id="g_b" type="range"  min="0" max="255" value="255" step="1"/></div>
+                <div class="bar"><label>Blue</label><input class="b" id="b_b" type="range"  min="0" max="255" value="0" step="1"/></div>
             </div>
             
-            <div class="gps">
-                <p>drag an image<br /> from your <br />desktop here</p>
+            <div class="op" >   
+            </div>
+            
+            <div class="op">                
+                <input id="rtd" type="submit" value="Generate"  ONCLICK="act();"/>
+                <input id="pp" type="submit" value="Pause Slide"  ONCLICK="play_pause(this);"/>
+                <!--<input id="timer" type="text"/>-->
+            </div>
+        </div>
+            
+        <div class="gps">
+            <p>drag an image<br /> from your <br />desktop here</p>
             <div id="slide">               
                 <div id="group">   
                 </div>      
             </div>
         </div>
+
+	</div>
         
-        <footer id="bottom">
-            <p class="left">Try Google Chrome for better performance.</p>
-            <p class="right">Developed by Zanoni Miranda and Zeno Rocha</p>
-        </footer>
+	<footer id="bottom">
+		<p class="left">Try Google Chrome for better performance.</p>
+		<p class="right">Developed by Zanoni Miranda and Zeno Rocha</p>
+	</footer>
 
   <script>
     var _gaq=[['_setAccount','UA-4114546-12'],['_trackPageview'],['_trackPageLoadTime']];
