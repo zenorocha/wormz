@@ -51,13 +51,23 @@ var cg=0;
 var cb=0;
 var px,py;
 /////
-document.getElementById("all").addEventListener("dragenter", dragOut, false);	
-
+document.addEventListener("dragenter", dragOut, false);
 document.getElementById(container).addEventListener('dragstart', dragStart, false);
 document.getElementById(container).addEventListener("dragend", dragEnd, false);
 document.getElementById(container).addEventListener("dragenter", dragOver, false);
 document.getElementById(container).addEventListener("dragover", noopHandler, false);
 document.getElementById(container).addEventListener("drop", drop, false);	
+document.getElementById(container).addEventListener("click", click, false);	
+
+function click (e){
+	if(e.target.id!="group"){	
+		pos = e.target.getAttribute("data-pos")
+		tim=0;
+		creatSlide()
+	}
+	evt.stopPropagation();
+	evt.preventDefault();
+}
 
 
 function play_pause(e){
@@ -73,7 +83,10 @@ function creatSlide(){
 	var groupHeight=26+82*images.length;
 	var res='';
 	for(var i=0;i<images.length;i++){
-		res+='<div data-pos='+i+' class="between"></div><img draggable="true" data-pos='+i+'  class="thumbnail" src="'+images[i]+'" />';
+		if(pos==i)
+			res+='<div data-pos='+i+' class="between"></div><img id=img'+i+' draggable="true" data-pos='+i+'  class="selectedThumbnail" src="'+images[i]+'" />';
+		else
+			res+='<div data-pos='+i+' class="between"></div><img id=img'+i+' draggable="true" data-pos='+i+'  class="thumbnail" src="'+images[i]+'" />';
 	}
 	res+='<div data-pos='+images.length+' class="between"></div>';
 	document.getElementById(container).innerHTML=res	
@@ -115,6 +128,7 @@ img.onload = function(){
 	ctx.fillRect(0,0,width,height);		
 }
 function dragOut(evt) {		
+	hoverObj.style.border="0px solid #232";	
 	if(hoverObj){
 		if(hoverObj.className=="thumbnail"){
 			hoverObj.style.border="1px solid #232";
@@ -122,7 +136,7 @@ function dragOut(evt) {
 			hoverObj.style.border="0px solid #232";
 		}
 		hoverObj.style.marginTop=2;
-	}				
+	}			
 	evt.stopPropagation();
 	evt.preventDefault();
 }
@@ -299,9 +313,6 @@ function act(){
 	cg=g_b.value;
 	cb=b_b.value;
 	
-	
-	
-	
 	for(var xx=0;xx<num;xx++){
 		d[xx].x=d[xx].y=width/2;
 		d[xx].lx=d[xx].ly=270;
@@ -309,8 +320,6 @@ function act(){
 	if(int_id!=-1)
 	clearInterval(int_id);
 	int_id=setInterval(ani,30);
-	if(slide)
-		pos=0;
 	tim=-pos;	
 }
 
@@ -343,6 +352,7 @@ function ani(){
 		if(slide)
 			pos++;
 		if(pos>=imageData.length){pos=0;}
+		creatSlide()
 		tim=0;
 	}
 	ctx.fillStyle = "rgba(0, 0, 0, "+ras+")";
