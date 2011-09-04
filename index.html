@@ -9,6 +9,8 @@
     <meta name="description" content="HTML5 Canvas Experiment">
   
 	<link rel="stylesheet" href="css/style.css">
+	
+	<script src="js/modernizr.js"></script>
 
 </head>
 <body>
@@ -74,17 +76,17 @@
 
 </body>
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script src="js/jquery.input.range.js"></script>
+    
+    <script> 
+        $(":range").rangeinput();
+    </script>
+
     <!-- Todo: Descobrir porque importar fora do <body> funciona e dentro do <head> não -->
   
     <!-- scripts concatenated and minified via build script -->
     <script defer src="js/dots.js"></script>
     <!-- end scripts -->
-    
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-    <script src="js/jquery.input.range.js"></script>
-    
-    <script> 
-        $("input:range").rangeinput();
-    </script> 
 
 </html>

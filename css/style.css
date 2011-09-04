@@ -91,12 +91,10 @@ p {
 	display: none;
 }
 #cont{
-	
 	margin-left: 60px;
 	background: url(../img/bg-header.jpg);
     width: 620px;
     height: 620px;
-	
 }
 
 #canvas {
@@ -216,6 +214,16 @@ p {
 
 .range {
     width: 0;
+}
+
+/* --- Polyfill --- */
+
+.no-canvas #canvas {
+    background: url(../img/polyfill.jpg) no-repeat 10px 10px;
+}
+
+.no-canvas .gps {
+    display: none;
 }
 
 /* --- Fonts --- */
