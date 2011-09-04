@@ -84,7 +84,7 @@ function creatSlide(){
 	var res='';
 	for(var i=0;i<images.length;i++){
 		if(pos==i)
-			res+='<div data-pos='+i+' class="between"></div><img id=img'+i+' draggable="true" data-pos='+i+'  class="selectedThumbnail" src="'+images[i]+'" />';
+			res+='<div data-pos='+i+' class="between"></div><img id=img'+i+' draggable="true" data-pos='+i+'  class="thumbnail selectedThumbnail" src="'+images[i]+'" />';
 		else
 			res+='<div data-pos='+i+' class="between"></div><img id=img'+i+' draggable="true" data-pos='+i+'  class="thumbnail" src="'+images[i]+'" />';
 	}
