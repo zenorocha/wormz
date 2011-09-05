@@ -70,6 +70,31 @@
 		<p class="right">Developed by <a href="mailto:zanoni.miranda@uniriotec.br">Zanoni Miranda</a> and <a href="http://zenorocha.com/">Zeno Rocha</a></p>
 	</footer>
 
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script src="js/jquery.input.range.js"></script>
+
+	<script> 
+		
+		$(":range").rangeinput();
+
+		var text;		
+
+		if (!$.browser.webkit) {
+			text = 'Try <a href="http://www.google.com/chrome">Google Chrome</a> for better performance.';
+		}
+		else {
+			text = '';
+		}
+
+		$('.left').html(text);
+
+
+	</script>
+	  
+	<!-- scripts concatenated and minified via build script -->
+	<script defer src="js/dots.js"></script>
+	<!-- end scripts -->
+
   <script>
     var _gaq=[['_setAccount','UA-4114546-12'],['_trackPageview'],['_trackPageLoadTime']];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
@@ -78,30 +103,5 @@
   </script>
 
 </body>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script src="js/jquery.input.range.js"></script>
-
-<script> 
-    
-	$(":range").rangeinput();
-
-	var text;		
-
-	if (!$.browser.webkit) {
-		text = 'Try <a href="http://www.google.com/chrome">Google Chrome</a> for better performance.';
-	}
-	else {
-		text = '';
-	}
-
-	$('.left').html(text);
-
-
-</script>
-  
-<!-- scripts concatenated and minified via build script -->
-<script defer src="js/dots.js"></script>
-<!-- end scripts -->
 
 </html>
