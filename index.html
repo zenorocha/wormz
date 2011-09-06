@@ -4,12 +4,13 @@
 
 	<meta charset="utf-8">
 
-    <title>dots . html5 canvas experiment</title>
+    <title>wormz . html5 canvas experiment</title>
     <meta name="author" content="Zanoni Miranda e Zeno Rocha">
     <meta name="description" content="HTML5 Canvas Experiment">
   
 	<link rel="stylesheet" href="css/style.css">
 	
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet' type='text/css'>
 	<script src="js/modernizr.js"></script>
 
 </head>
@@ -18,8 +19,8 @@
 	<div id="wrap">
     
 		<header id="top">
-		    <img id="logo" src="img/logo.png" alt="Dots - HTML5 Canvas Experiment" />
-		    <img id="html5" src="img/html5.png" alt="HTML5" />
+		    <h1>wormz</h1>
+		    <h2>html5 canvas experiment</h2>
 		</header>
     
 	    <div id="white-spot"></div>
@@ -35,7 +36,7 @@
 		<div class="gp" >
             <div class="op" >
                 <div class="bar"><label>Speed</label><input class="b" id="spd_b" type="range"  min="0.5" max="7" value="3.0" step="0.1"/></div>
-                <div class="bar"><label>Effect</label><input class="b" id="mag_b" type="range"  min="0.0" max="3" value="2" step="0.01"/></div>
+                <div class="bar"><label>Influence</label><input class="b" id="mag_b" type="range"  min="0.0" max="3" value="2" step="0.01"/></div>
                 <div class="bar"><label>Random</label><input class="b" id="rdn_b" type="range"  min="0.0" max="2" value="0.75" step="0.01" /></div>
                 <div class="bar"><label>Trail</label><input class="b" id="ras_b" type="range"  min="0.15" max="0.8" value="0.4" step="0.01"/></div>
                 <div class="bar"><label>Amount</label><input class="b" id="num_b" type="range"  min="1" max="6000" value="3500" /></div>
@@ -66,29 +67,15 @@
 	</div>
         
 	<footer id="bottom">
-		<p class="left"></p>
+		<p class="left">Fork it on <a href="https://github.com/HTML5-Pro/wormz">Github</a></p>
 		<p class="right">Developed by <a href="mailto:zanoni.miranda@uniriotec.br">Zanoni Miranda</a> and <a href="http://zenorocha.com/">Zeno Rocha</a></p>
 	</footer>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	<script src="js/jquery.input.range.js"></script>
 
-	<script> 
-		
+	<script>
 		$(":range").rangeinput();
-
-		var text;		
-
-		if (!$.browser.webkit) {
-			text = 'Try <a href="http://www.google.com/chrome">Google Chrome</a> for better performance.';
-		}
-		else {
-			text = '';
-		}
-
-		$('.left').html(text);
-
-
 	</script>
 	  
 	<!-- scripts concatenated and minified via build script -->

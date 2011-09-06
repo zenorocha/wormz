@@ -10,6 +10,24 @@ body {
 	position: relative;
 }
 
+h1 {
+    color: #fff;
+    font-size: 38px;
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+    top: -15px;
+    left: 15px;
+}
+
+h2 {
+    color: #c4fa09;
+    font-size: 29px;
+    font-family: 'CarnalaRegular', serif;
+    position: absolute;
+    top: -11px;
+    left: 160px;
+}
+
 p {
     color: #FFF;
     font-size: 20px;
@@ -223,8 +241,8 @@ body > #wrap {
 	font-size: 20px;
 	text-shadow: 0 -1px 1px rgba(19,65,88,.8);
 	background: #000000;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0a0a0a), to(#111111));
-	background: -moz-linear-gradient(#0a0a0a, #111111);
+	background: -webkit-gradient(linear, 0% 0%, 0% 90%, from(#0a0a0a), to(#17171a));
+	background: -moz-linear-gradient(#0a0a0a, #17171a);
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
 	border-radius: 8px;
