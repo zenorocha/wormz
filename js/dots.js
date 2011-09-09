@@ -130,15 +130,19 @@ function click (evt){
 }
 
 function dragOut(evt) {		
-	hoverObj.style.border="0px solid #232";	
-	if(hoverObj){
-		if(hoverObj.className=="thumbnail"){
-			hoverObj.style.border="1px solid #232";
+	
+	
+	document.getElementById("trash").className = "close-trash";
+	
+	if(hoverObj) {
+		console.log('dragOut '+hoverObj.className );		
+		if(hoverObj.className == "thumbnail hoverThumbnail"  || hoverObj.className == "thumbnail selectedThumbnail"){
+			hoverObj.className = "thumbnail";
 		}else{
-			hoverObj.style.border="0px solid #232";
-		}
-		hoverObj.style.marginTop=2;
-	}			
+			hoverObj.className = "between";
+		}		
+	}
+	hoverObj=null;
 	evt.stopPropagation();
 	evt.preventDefault();
 }
@@ -148,6 +152,7 @@ function noopHandler(evt) {
 	evt.preventDefault();
 }
 function dragEnd(evt) {
+	document.getElementById("trash").className = "close-trash";			
 	evt.stopPropagation();
 	evt.preventDefault();
 	creatSlide()
@@ -158,20 +163,25 @@ function dragStart(evt){
 }
 function dragOver(evt) {
 	if((evt.target.id!="group")&&(evt.target.id!="slide")){
-		if(evt.target.id=="trash"){
-			
-		}else{	
+		if(evt.target.id == "trash") {
+			document.getElementById("trash").className = "open-trash";
+		} else{ 	
 			if(hoverObj){
-				if(hoverObj.className=="thumbnail"){
-					hoverObj.style.border="1px solid #232";
+				if(hoverObj.className == "thumbnail hoverThumbnail"  || hoverObj.className == "thumbnail selectedThumbnail"){
+					hoverObj.className = "thumbnail";
 				}else{
-					hoverObj.style.border="0px solid #232";
+					hoverObj.className = "between";
 				}
-				hoverObj.style.marginTop=2;
-			}	
-			hoverObj=evt.target
-			hoverObj.style.border="3px solid #AAA";
-			hoverObj.style.marginTop=0;	
+			}
+			document.getElementById("trash").className = "close-trash";			
+			hoverObj = evt.target;
+		
+			if(evt.target.className == "thumbnail" || evt.target.className == "thumbnail selectedThumbnail"){
+				evt.target.className = "thumbnail hoverThumbnail";
+			}else{
+				evt.target.className = "between betweenHover";
+			}
+			
 		}
 	}
 	evt.stopPropagation();

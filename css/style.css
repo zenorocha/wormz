@@ -15,16 +15,16 @@ h1 {
     font-size: 38px;
     font-family: 'Ubuntu', sans-serif;
     position: absolute;
-    top: -15px;
+    top: -20px;
     left: 15px;
 }
 
 h2 {
     color: #c4fa09;
-    font-size: 29px;
+    font-size: 28px;
     font-family: 'CarnalaRegular', serif;
     position: absolute;
-    top: -11px;
+    top: -17px;
     left: 160px;
 }
 
@@ -47,7 +47,7 @@ body > #wrap {
 
 #top {
     width: 100%;
-    height: 70px;
+    height: 55px;
     background: url(../img/bg-header.jpg);
     position: absolute;
     top: 0;
@@ -90,21 +90,22 @@ body > #wrap {
     margin: 0 10px 0 0;
 }
 
-#all{
+#all {
 	display: block;
 	margin: 0px auto;
 	z-index: 3;
 	/*position: relative;*/
 	width: 620px;
 	height: 620px;
-	padding: 90px 0 32px 0;
+	padding: 75px 0 32px 0;
 }
-.bar{
+
+.bar {
 	background: url(../img/bg-header.jpg);
 	display: block;
 	width: 210px;
 	height: 20px;
-	margin: 5px 0 5px 5px;
+	margin: -10px 0 5px 5px;
 	padding: 10px; 
 }
 
@@ -150,17 +151,20 @@ body > #wrap {
 	-webkit-user-select: none;
 	user-select: none;
 }
-.gpr{
-}
+
 .gps{
 	background: url(../img/bg-header.jpg);
 	display:block;
-	margin: 20px 15px;
+	margin: 5px 15px;
 	position: absolute;
     top: 70px;
     right: 0;
-    width: 110px;
+    width: 90px;
     height:auto;
+}
+
+.gps p {
+	margin: 0;
 }
 
 #slide{
@@ -187,8 +191,8 @@ body > #wrap {
 }
 .thumbnail{
 	display:block;
-	height:60px;
-	width:60px;
+	height: 48px;
+	width: 48px;
 	background:#000;
 	cursor: move;
 	margin: 0 auto;
@@ -196,19 +200,44 @@ body > #wrap {
 	padding: 3px;
 	-webkit-transition: border 0.7s linear;
 	-moz-transition: border 0.7s linear;
-	transition: border 0.7s linear
+	transition: border 0.7s linear;
+	
+	-webkit-transition: height 0.1s ease-in-out;
+	-moz-transition: height 0.1s ease-in-out;
+	transition: height 0.1s ease-in-out;
+	-webkit-transition: width 0.1s ease-in-out;
+	-moz-transition: width 0.1s ease-in-out;
+	transition: width 0.1s ease-in-out;
 }
 
 .selectedThumbnail {
 	border: 2px solid #c4fa09;
 }	
 
+.hoverThumbnail {
+	height: 55px;
+	width: 55px;
+	border-color: #c4fa09;
+}
+
 .between{
 	display:block;
-	height:20px;
-	width:60px;
-	margin: 2px auto;	
+	height: 15px;
+	width: 50px;
+	margin: 2px auto;
+	-webkit-transition: height 0.1s ease-in-out;
+	-moz-transition: height 0.1s ease-in-out;
+	transition: height 0.1s ease-in-out;
 }
+
+.betweenHover {
+	height: 50px;
+	margin: 0 auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 2px dashed #c4fa09;
+}
+
 [draggable] {
 	-moz-user-select: none;
 	-khtml-user-select: none;
@@ -329,10 +358,19 @@ body > #wrap {
 
 }
 
+/* --- Trash --- */
+
 #trash{
 	display:block;
-	height:64px;
-	width:64px;
-	background:url("../img/trash.png");
+	height:48px;
+	width:48px;
 	margin: 0 auto;
+}
+
+.open-trash {
+	background: url("../img/lixo-vazio.png");
+}
+
+.close-trash {
+	background: url("../img/lixo-cheio.png");
 }
