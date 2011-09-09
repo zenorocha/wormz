@@ -97,7 +97,7 @@ body > #wrap {
 	/*position: relative;*/
 	width: 620px;
 	height: 620px;
-	padding: 75px 0 32px 0;
+	padding: 75px 0 50px 0;
 }
 
 .bar {
@@ -105,7 +105,7 @@ body > #wrap {
 	display: block;
 	width: 210px;
 	height: 20px;
-	margin: -10px 0 5px 5px;
+	margin: 5px 0 5px 5px;
 	padding: 10px; 
 }
 
@@ -362,9 +362,10 @@ body > #wrap {
 
 #trash{
 	display:block;
-	height:48px;
-	width:48px;
+	height: 55px;
+	width: 55px;
 	margin: 0 auto;
+	margin-bottom: 10px;
 }
 
 .open-trash {
