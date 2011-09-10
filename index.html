@@ -2,43 +2,35 @@
 <html lang="en">
 <head>
 
-	<meta charset="utf-8">
+    <meta charset="utf-8">
 
     <title>wormz . html5 canvas experiment</title>
     <meta name="author" content="Zanoni Miranda e Zeno Rocha">
     <meta name="description" content="HTML5 Canvas Experiment">
   
-	<link rel="stylesheet" href="css/style.css">
-	
-	<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet' type='text/css'>
-	
-	<script src="js/modernizr.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet' type='text/css'>
+    
+    <script src="js/modernizr.min.js"></script>
 
 </head>
 <body>
-
-	<div id="wrap">
     
-		<header id="top">
-		    <h1>wormz</h1>
-		    <h2>html5 canvas experiment</h2>
-		    <div id="html5-logo"></div>
-		</header>
+    <header id="top">
+            <h1>wormz</h1>
+            <h2>html5 canvas experiment</h2>
+            <div id="html5-logo"></div>
+    </header>
     
-		<div id="center">
-			<div id="container-canvas">
-				<canvas id="canvas" width="600" height="600"></canvas>
-			</div>
-		</div>
-	
-		<aside id="controls">
-		
+    <aside id="controls">
+        
             <div class="controls-group" style="margin-top: -15px;">
-                <div class="bar"><label>Speed</label><input id="speed-control" type="range" min="0.5" max="7" value="3.0" step="0.1" /></div>
+                <div class="bar"><label>Speed</label><input id="speed-control" type="range" min="0.5" max="7" value="3.5" step="0.1" /></div>
                 <div class="bar"><label>Influence</label><input id="influence-control" type="range" min="0.0" max="3" value="2" step="0.01" /></div>
                 <div class="bar"><label>Random</label><input id="random-control" type="range" min="0.0" max="2" value="0.75" step="0.01" /></div>
                 <div class="bar"><label>Trail</label><input id="trail-control" type="range" min="0.15" max="0.8" value="0.4" step="0.01" /></div>
-                <div class="bar"><label>Amount</label><input id="amount-control" type="range" min="1" max="6000" value="3500" /></div>
+                <div class="bar"><label>Amount</label><input id="amount-control" type="range" min="1" max="6000" value="3300" /></div>
             </div>
             <div class="controls-group">
                 <div class="bar"><label>Red</label><input id="red-control" type="range" min="0" max="255" value="190" step="1" /></div>
@@ -46,38 +38,44 @@
                 <div class="bar"><label>Blue</label><input id="blue-control" type="range" min="0" max="255" value="0" step="1" /></div>
             </div>
             
-            <div class="controls-group">                
-		<a id="btn-generate" class="btn" onclick="action(event);" href="#"><span>Generate</span></a>
-		<a id="btn-slide" class="btn" onclick="play_pause(this, event);" href="#"><span>Stop Slide</span></a>
+            <div class="controls-group">
+                <a id="btn-generate" class="btn" onclick="act(event);" href="#"><span>Generate</span></a>
+                <a id="btn-slide" class="btn" onclick="play_pause(this, event);" href="#"><span>Stop Slide</span></a>
             </div>
-			
+            
         </aside>
+
+    <div id="wrap">
+    
+        <div id="center">
+            <div id="container-canvas">
+                <canvas id="canvas" width="600" height="600"></canvas>
+            </div>
+        </div>
             
         <aside id="img-slider">
             <p>drag an image<br> from your <br>desktop here</p>
             <div id="img-container">
                 <div id="img-group"></div> 
-				<div id="trash" class="close-trash"></div>
+                <div id="trash" class="close-trash"></div>
             </div>
         </aside>
 
-	</div>
+    </div>
         
-	<footer id="bottom">
-		<p class="left">Fork it on <a href="https://github.com/HTML5-Pro/wormz">Github</a></p>
-		<p class="right">Developed by <a href="mailto:zanoni.miranda@uniriotec.br">Zanoni Miranda</a> and <a href="http://zenorocha.com/">Zeno Rocha</a></p>
-	</footer>
+    <footer id="bottom">
+        <p class="left">Fork it on <a href="https://github.com/HTML5-Pro/wormz">Github</a></p>
+        <p class="right">Developed by <a href="mailto:zanoni.miranda@uniriotec.br">Zanoni Miranda</a> and <a href="http://zenorocha.com/">Zeno Rocha</a></p>
+    </footer>
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-	<script src="js/jquery.input.range.min.js"></script>
+    <script src="js/wormz.js"></script>
 
-	<script>
-		$(":range").rangeinput();
-	</script>
-	  
-	<!-- scripts concatenated and minified via build script -->
-	<script defer src="js/wormz.js"></script>
-	<!-- end scripts -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script src="js/jquery.input.range.min.js"></script>
+
+    <script>
+        $(":range").rangeinput();
+    </script>
 
   <script>
     var _gaq=[['_setAccount','UA-4114546-12'],['_trackPageview'],['_trackPageLoadTime']];

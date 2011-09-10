@@ -1,5 +1,10 @@
 html, body, #wrap {
-	height: 100%;
+    height: 100%;
+}
+
+body > #wrap {
+    height: auto; 
+    min-height: 100%;
 }
 
 body {
@@ -7,7 +12,7 @@ body {
     text-align: center;
     margin: 0;
     font-family: 'CarnalaRegular', serif;
-	position: relative;
+    position: relative;
 }
 
 h1 {
@@ -15,7 +20,7 @@ h1 {
     font-size: 38px;
     font-family: 'Ubuntu', sans-serif;
     position: absolute;
-    top: -20px;
+    top: -23px;
     left: 15px;
 }
 
@@ -35,14 +40,9 @@ p {
 }
 
 a {
-	color: #FFF;
-	font-weight: bold;
-	text-decoration: none;
-}
-
-body > #wrap {
-	height: auto; 
-	min-height: 100%;
+    color: #FFF;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 /* --- Structure --- */
@@ -60,35 +60,34 @@ body > #wrap {
 }
 
 #center {
-	display: block;
-	margin: 0px auto;
-	z-index: 3;
-	/*position: relative;*/
-	width: 620px;
-	height: 620px;
-	padding: 75px 0 50px 0;
+    display: block;
+    width: 620px;
+    height: 620px;
+    position: absolute;
+    top: 75px;
+    left: 50%;
+    margin: 0 0 0 -300px;
+    /*padding: 75px 0 50px 0;*/
 }
 
 #controls {
-	position: absolute;
-	top: 70px;
-	left: 0;
-	float: left;
-	display:block;
-	margin:10px;
-	-moz-user-select: none;
-	-khtml-user-select: none;
-	-webkit-user-select: none;
-	user-select: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    float: left;
+    display:block;
+    margin:10px;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 #img-slider {
-	background: url(../img/secondary-bg.jpg);
-	display:block;
-	margin: 5px 15px;
-	position: absolute;
-    top: 70px;
-    right: 0;
+    background: url(../img/secondary-bg.jpg);
+    display:block;
+    margin: 75px 15px 55px;
+    float: right;
     width: 90px;
     height:auto;
 }
@@ -100,8 +99,8 @@ body > #wrap {
     position: relative;
     z-index: 2;
     border-top: 2px solid #c4fa09;
-	margin-top: -37px;
-	clear:both;
+    margin-top: -37px;
+    clear:both;
 }
 
 /* --- Header --- */
@@ -117,8 +116,8 @@ body > #wrap {
 /* --- Canvas --- */
 
 #container-canvas {
-	margin-left: 60px;
-	background: url(../img/secondary-bg.jpg);
+    margin-left: 60px;
+    background: url(../img/secondary-bg.jpg);
     width: 620px;
     height: 620px;
 }
@@ -143,8 +142,8 @@ body > #wrap {
 /* --- Controls --- */
 
 .controls-group {
-	display:block;
-	padding: 5px 0;
+    display:block;
+    padding: 5px 0;
 }
 
 .bar {
@@ -196,7 +195,7 @@ body > #wrap {
 }
 
 .range {
-	display: none;
+    display: none;
 }
 
 /* --- Button --- */
@@ -265,78 +264,78 @@ body > #wrap {
 /* --- Image Slider --- */
 
 #img-slider p {
-	margin: 0;
+    margin: 0;
 }
 
 #img-container {
-	display: block;
-	padding: 5px;
-	overflow: auto;
+    display: block;
+    padding: 5px;
+    overflow: auto;
 }
 
 #img-group{
-	display:block;
-	margin:auto;
-	-moz-user-select: none;
-	-khtml-user-select: none;
-	-webkit-user-select: none;
-	user-select: none;
-	padding: 10px 0;
+    display:block;
+    margin:auto;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    padding: 10px 0;
 }
 
 .thumbnail{
-	display:block;
-	height: 48px;
-	width: 48px;
-	background:#000;
-	cursor: move;
-	margin: 0 auto;
-	border: 2px solid #CECDCD;
-	padding: 3px;
-	-webkit-transition: border 0.7s linear;
-	-moz-transition: border 0.7s linear;
-	transition: border 0.7s linear;
-	-webkit-transition: height 0.1s ease-in-out;
-	-moz-transition: height 0.1s ease-in-out;
-	transition: height 0.1s ease-in-out;
-	-webkit-transition: width 0.1s ease-in-out;
-	-moz-transition: width 0.1s ease-in-out;
-	transition: width 0.1s ease-in-out;
+    display:block;
+    height: 48px;
+    width: 48px;
+    background:#000;
+    cursor: move;
+    margin: 0 auto;
+    border: 2px solid #CECDCD;
+    padding: 3px;
+    -webkit-transition: border 0.7s linear;
+    -moz-transition: border 0.7s linear;
+    transition: border 0.7s linear;
+    -webkit-transition: height 0.1s ease-in-out;
+    -moz-transition: height 0.1s ease-in-out;
+    transition: height 0.1s ease-in-out;
+    -webkit-transition: width 0.1s ease-in-out;
+    -moz-transition: width 0.1s ease-in-out;
+    transition: width 0.1s ease-in-out;
 }
 
 .selectedThumbnail {
-	border: 2px solid #c4fa09;
-}	
+    border: 2px solid #c4fa09;
+}   
 
 .hoverThumbnail {
-	height: 55px;
-	width: 55px;
-	border-color: #c4fa09;
+    height: 55px;
+    width: 55px;
+    border-color: #c4fa09;
 }
 
 .between{
-	display:block;
-	height: 15px;
-	width: 50px;
-	margin: 2px auto;
-	-webkit-transition: height 0.1s ease-in-out;
-	-moz-transition: height 0.1s ease-in-out;
-	transition: height 0.1s ease-in-out;
+    display:block;
+    height: 15px;
+    width: 50px;
+    margin: 2px auto;
+    -webkit-transition: height 0.1s ease-in-out;
+    -moz-transition: height 0.1s ease-in-out;
+    transition: height 0.1s ease-in-out;
 }
 
 .betweenHover {
-	height: 50px;
-	margin: 0 auto;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	border: 2px dashed #c4fa09;
+    height: 50px;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px dashed #c4fa09;
 }
 
 [draggable] {
-	-moz-user-select: none;
-	-khtml-user-select: none;
-	-webkit-user-select: none;
-	user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 /* --- Trash --- */
