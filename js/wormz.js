@@ -2,15 +2,15 @@ var width = 600;
 var height = 600;
 
 var slide=true	
-var cut;
+var Transfer;
 
 var imgContainer = document.getElementById("img-container");
 
-var imageDataCut
-var dataCut
-var imagesCut
+var imageDataTransfer
+var dataTransfer
+var imagesTransfer
 
-var insert_pos;
+var insert_position;
 var images = ["img/example-img-1.jpg", "img/example-img-2.jpg", "img/example-img-3.jpg", "img/example-img-4.jpg", "img/example-img-5.jpg"];
 
 // control vars
@@ -32,36 +32,33 @@ var btnSlide = document.getElementById("btn-slide");
 
 var isloading=true	
 var int_id=-1;	
-var img;
 var data = new Array();
 var imageData = new Array();
 var datax;
 var imagexData;
-var na=8;
-var pos=0;
-var tim=-pos;
+var numberAngles=8;
+var position=0;
+var timer=-position;
 var lastt=new Date();
 var state=0;
-var hoverObj;
+var hoverElement;
 ////the chaos variables!
-var spd=3;
-var mag=5;
+var speed=3;
+var influence=5;
 var color="#00FF00";
-var rdn=0.5;
-var ras=0.09;
-var num=pos;
+var random=0.5;
+var trail=0.09;
+var amount=position;
 
-var cr=0;
-var cg=0;
-var cb=0;
-var px,py;
+var componentRed=0;
+var componentGreen=0;
+var componentBlue=0;
+var positionX,positionY;
 /////
 
 
-function play_pause(e, event){
-	
-	event.preventDefault();
-	
+function play_pause(e, event){	
+	event.preventDefault();	
 	if(slide){
 		e.innerHTML="<span>Play Slide</span>";
 		slide=false;
@@ -72,49 +69,47 @@ function play_pause(e, event){
 	
 }
 function creatSlide(){	
-	var groupHeight=26+82*images.length;
 	var res='';
 	for(var i=0;i<images.length;i++){
-		if(pos==i)
-			res+='<div data-pos='+i+' class="between"></div><img id=img'+i+' draggable="true" data-pos='+i+'  class="thumbnail selectedThumbnail" src="'+images[i]+'" />';
+		if(position==i)
+			res+='<div data-position='+i+' class="between"></div><img id=img'+i+' draggable="true" data-position='+i+'  class="thumbnail selectedThumbnail" src="'+images[i]+'" />';
 		else
-			res+='<div data-pos='+i+' class="between"></div><img id=img'+i+' draggable="true" data-pos='+i+'  class="thumbnail" src="'+images[i]+'" />';
+			res+='<div data-position='+i+' class="between"></div><img id=img'+i+' draggable="true" data-position='+i+'  class="thumbnail" src="'+images[i]+'" />';
 	}
-	res+='<div data-pos='+images.length+' class="between"></div>';
+	res+='<div data-position='+images.length+' class="between"></div>';
 	document.getElementById("img-group").innerHTML=res	
-	document.getElementById("img-group").style.height=groupHeight;
 }
 function loadImage(file) {
-	f=file.files[0];
+	var the_file=file.files[0];
 	
 	var reader = new FileReader();
 	reader.onload = function(loadEvent) {
 		preload(loadEvent.target.result);
 	}
-	reader.readAsDataURL(f);
+	reader.readAsDataURL(the_file);
 }
 function preload(fileURL){	
-	if(hoverObj){
-		state=hoverObj.getAttribute("data-pos");
-		if(hoverObj.className=="thumbnail"){
-			images[hoverObj.getAttribute("data-pos")]=fileURL;
+	if(hoverElement){
+		state=hoverElement.getAttribute("data-position");
+		if(hoverElement.className=="thumbnail hoverThumbnail"){
+			images[hoverElement.getAttribute("data-position")]=fileURL;
 		}else{
-			images.splice(hoverObj.getAttribute("data-pos"),0,fileURL);
+			images.splice(hoverElement.getAttribute("data-position"),0,fileURL);
 		}
 	}else{
 		state=images.length;
 		images[images.length]=fileURL;			
 	}
 	creatSlide()
-	img.src=fileURL;		
+	image.src=fileURL;		
 }
-var img = new Image();
-img.onload = function(){
-	ctx.drawImage(img, 0, 0,width,height);	
-	imageData.splice(state,0,ctx.getImageData(0, 0, canvas.width, canvas.height))
+image = new Image();
+image.onload = function(){
+	ctx.drawImage(image, 0, 0,width,height);	
+	imageData.splice(state,0,ctx.getImageData(0, 0,width, height))
 	data.splice(state,0,imageData[state].data);
 	state++;
-	if(pos>=imageData.length){pos=0;}		
+	if(position>=imageData.length)position=0;		
 	loading();
 	ctx.fillStyle = "rgba(0, 0, 0, 1)";
 	ctx.fillRect(0,0,width,height);		
@@ -124,34 +119,32 @@ document.addEventListener("dragenter", dragOut, false);
 
 imgContainer.addEventListener('dragstart', dragStart, false);
 imgContainer.addEventListener("dragend", dragEnd, false);
-imgContainer.addEventListener("dragenter", dragOver, false);
+imgContainer.addEventListener("dragenter", dragEnter, false);
 imgContainer.addEventListener("dragover", noopHandler, false);
 imgContainer.addEventListener("drop", drop, false);
 imgContainer.addEventListener("click", click, false);
 
 function click (evt){
 	if(evt.target.id!="img-group"){	
-		pos = evt.target.getAttribute("data-pos")
-		tim=0;
+		position = evt.target.getAttribute("data-position")
+		timer=0;
 		creatSlide()
 	}
 	evt.stopPropagation();
 	evt.preventDefault();
 }
 
-function dragOut(evt) {	
-	
-	document.getElementById("trash").className = "close-trash";
-	
-	if(hoverObj) {
-		console.log('dragOut '+hoverObj.className );		
-		if(hoverObj.className == "thumbnail hoverThumbnail"  || hoverObj.className == "thumbnail selectedThumbnail"){
-			hoverObj.className = "thumbnail";
+function dragOut(evt) {		
+	document.getElementById("trash").className = "close-trash";	
+	if(hoverElement) {
+		console.log('dragOut '+hoverElement.className );		
+		if(hoverElement.className == "thumbnail hoverThumbnail"  || hoverElement.className == "thumbnail selectedThumbnail"){
+			hoverElement.className = "thumbnail";
 		}else{
-			hoverObj.className = "between";
+			hoverElement.className = "between";
 		}		
 	}
-	hoverObj=null;
+	hoverElement=null;
 	evt.stopPropagation();
 	evt.preventDefault();
 }
@@ -167,23 +160,23 @@ function dragEnd(evt) {
 	creatSlide()
 }
 function dragStart(evt){
-	cut=evt.target.getAttribute("data-pos");
+	Transfer=evt.target.getAttribute("data-position");
 	evt.dataTransfer.setData('text/html', evt.target.src);
 }
-function dragOver(evt) {
+function dragEnter(evt) {
 	if((evt.target.id!="img-group")&&(evt.target.id!="img-container")){
 		if(evt.target.id == "trash") {
 			document.getElementById("trash").className = "open-trash";
 		} else{ 	
-			if(hoverObj){
-				if(hoverObj.className == "thumbnail hoverThumbnail"  || hoverObj.className == "thumbnail selectedThumbnail"){
-					hoverObj.className = "thumbnail";
+			if(hoverElement){
+				if(hoverElement.className == "thumbnail hoverThumbnail"  || hoverElement.className == "thumbnail selectedThumbnail"){
+					hoverElement.className = "thumbnail";
 				}else{
-					hoverObj.className = "between";
+					hoverElement.className = "between";
 				}
 			}
 			document.getElementById("trash").className = "close-trash";			
-			hoverObj = evt.target;
+			hoverElement = evt.target;
 		
 			if(evt.target.className == "thumbnail" || evt.target.className == "thumbnail selectedThumbnail"){
 				evt.target.className = "thumbnail hoverThumbnail";
@@ -200,13 +193,13 @@ function drop(evt){
 	evt.stopPropagation();
 	evt.preventDefault();	
 	if(evt.dataTransfer.files.length==0){
-		imagesCut=images[cut]
-		imageDataCut=imageData[cut]
-		dataCut=data[cut]
+		imagesTransfer=images[Transfer]
+		imageDataTransfer=imageData[Transfer]
+		dataTransfer=data[Transfer]
 		
-		images.splice(cut,1)
-		imageData.splice(cut,1)
-		data.splice(cut,1)
+		images.splice(Transfer,1)
+		imageData.splice(Transfer,1)
+		data.splice(Transfer,1)
 	}
 	if((evt.target.id!="img-group")&&(evt.target.id!="img-container")){
 		if(evt.target.id=="trash"){
@@ -215,67 +208,65 @@ function drop(evt){
 			if(evt.dataTransfer.files.length>0){
 				loadImage(evt.dataTransfer)
 			}else{
-				var position=evt.target.getAttribute("data-pos")
-				if(position>cut)position--;
-				if((evt.target.className=="thumbnail hoverThumbnail")&&(cut!=evt.target.getAttribute("data-pos"))){
-					imageData.splice(cut,0,imageData[position])
-					data.splice(cut,0,data[position]);
-					images.splice(cut,0,images[position]);
-					imageData.splice(evt.target.getAttribute("data-pos"),1)
-					data.splice(evt.target.getAttribute("data-pos"),1);
-					images.splice(evt.target.getAttribute("data-pos"),1);
-					imageData.splice(evt.target.getAttribute("data-pos"),0,imageDataCut)
-					data.splice(evt.target.getAttribute("data-pos"),0,dataCut);
-					images.splice(evt.target.getAttribute("data-pos"),0,imagesCut)	
+				var positionElement=evt.target.getAttribute("data-position")
+				if(positionElement>Transfer)positionElement--;
+				if((evt.target.className=="thumbnail hoverThumbnail")&&(Transfer!=evt.target.getAttribute("data-position"))){
+					imageData.splice(Transfer,0,imageData[positionElement])
+					data.splice(Transfer,0,data[positionElement]);
+					images.splice(Transfer,0,images[positionElement]);
+					imageData.splice(evt.target.getAttribute("data-position"),1)
+					data.splice(evt.target.getAttribute("data-position"),1);
+					images.splice(evt.target.getAttribute("data-position"),1);
+					imageData.splice(evt.target.getAttribute("data-position"),0,imageDataTransfer)
+					data.splice(evt.target.getAttribute("data-position"),0,dataTransfer);
+					images.splice(evt.target.getAttribute("data-position"),0,imagesTransfer)	
 				}else{
-					imageData.splice(position,0,imageDataCut)
-					data.splice(position,0,dataCut);
-					images.splice(position,0,imagesCut)	
+					imageData.splice(positionElement,0,imageDataTransfer)
+					data.splice(positionElement,0,dataTransfer);
+					images.splice(positionElement,0,imagesTransfer)	
 				}
 				creatSlide();
 			}			
 		} 
 	}else{
-		imageData.splice(cut,0,imageDataCut)
-		data.splice(cut,0,dataCut);
-		images.splice(cut,0,imagesCut)	
+		imageData.splice(Transfer,0,imageDataTransfer)
+		data.splice(Transfer,0,dataTransfer);
+		images.splice(Transfer,0,imagesTransfer)	
 		creatSlide();
 	}
 }
-//var timer = document.getElementById("timer");
-var angs=new Array();
-for(var j=0;j<na;j++){			
-	var ang=((360+0)/(na))*j;
-	angs.push(Math.round(Math.cos(ang*Math.PI/180)*10));
-	angs.push(Math.round(Math.sin(ang*Math.PI/180)*10));
+var anglesComp=new Array();
+for(var j=0;j<numberAngles;j++){			
+	var ang=((360+0)/(numberAngles))*j;
+	anglesComp.push(Math.round(Math.cos(ang*Math.PI/180)*10));
+	anglesComp.push(Math.round(Math.sin(ang*Math.PI/180)*10));
 }
 function go(){
-	this.lx=this.x;
-	this.ly=this.y;
-	var rx=ry=0;
+	this.lastX=this.x;
+	this.lastY=this.y;
+	var resultX=resultY=0;
 	var x= Math.round(this.x);
 	var y= Math.round(this.y);
-	//var p=(Math.round(this.y)+(Math.round(this.x)*img.width))*4;
-	var imdw=imageData[pos].width*4;
-	if(data[pos][((y*imdw)+(x*4))]>pos){
-		var pp=(((y)*(imdw)) + ((x)*4));
-		if(data[pos][pp]>100){
-			for(var j=0;j<na;j++){
-				var px=angs[(j*2)];//Math.round(Math.cos(ang*Math.PI/180)*10);
-				var py=angs[(j*2)+1];//Math.round(Math.sin(ang*Math.PI/180)*10);
-				if(((x+px>0)&&(x+px<width))&&((y+py>0)&&(y+py<height))){	
-					var p=(((py+y)*(imdw)) + ((px+x)*4));
-					var ppp=(data[pos][p]+data[pos][p+1]+data[pos][p+2])/3;
-					rx+=(px/100)*((255-ppp)/200);
-					ry+=(py/100)*((255-ppp)/200); 					
+	var dataImageWidth=imageData[position].width*4;
+	if(data[position][((y*dataImageWidth)+(x*4))]>position){
+		var dataImageCurrentPosition=(((y)*(dataImageWidth)) + ((x)*4));
+		if(data[position][dataImageCurrentPosition]>100){
+			for(var j=0;j<numberAngles;j++){
+				var positionX=anglesComp[(j*2)];
+				var positionY=anglesComp[(j*2)+1];
+				if(((x+positionX>0)&&(x+positionX<width))&&((y+positionY>0)&&(y+positionY<height))){	
+					var dataImageAnglePosition=(((positionY+y)*(dataImageWidth)) + ((positionX+x)*4));
+					var colorValue=(data[position][dataImageAnglePosition]+data[position][dataImageAnglePosition+1]+data[position][dataImageAnglePosition+2])/3;
+					resultX+=(positionX/100)*((255-colorValue)/200);
+					resultY+=(positionY/100)*((255-colorValue)/200); 					
 				}
 			}
 		}
 	}	
-	this.vx+=rx*mag;
-	this.vy+=ry*mag;
-	this.vx+=(Math.random()-0.5)*rdn;
-	this.vy+=(Math.random()-0.5)*rdn;
+	this.vx+=resultX*influence;
+	this.vy+=resultY*influence;
+	this.vx+=(Math.random()-0.5)*random;
+	this.vy+=(Math.random()-0.5)*random;
 	
 	var som=Math.sqrt((this.vx*this.vx)+(this.vy*this.vy));
 	this.vx/=som;
@@ -297,113 +288,101 @@ function go(){
 		this.vy*=-1;
 		this.y=height;
 	}	
-	this.x+=this.vx*spd*1.5;
-	this.y+=this.vy*spd*1.5;
-	
+	this.x+=this.vx*speed*1.5;
+	this.y+=this.vy*speed*1.5;	
 }
 
-function draw(col){
-	//ctx.fillStyle = "#"+col;
-	//ctx.fillRect(this.x,this.y,this.w,this.w);
-	//ctx.strokeStyle = "#"+col;		
-	ctx.beginPath();ctx.moveTo(this.x,this.y);ctx.lineTo(this.lx,this.ly);ctx.closePath();ctx.stroke();
+function draw(col){	
+	ctx.beginPath();
+	ctx.moveTo(this.x,this.y);
+	ctx.lineTo(this.lastX,this.lastY);
+	ctx.closePath();
+	ctx.stroke();
 }
 
-function dot(nx,ny){
-	this.x=this.lx=nx;
-	this.y=this.ly=ny;
+function worm(nx,ny){
+	this.x=this.lastX=nx;
+	this.y=this.lastY=ny;
 	this.vx=Math.random()-0.5;
 	this.vy=Math.random()-0.5;
-	this.c=color;
-	this.w=1;//Math.random()*1.0+1.0;
-	///metodos
+	
 	this.draw=draw;
 	this.go=go;
 }
 function loading(){
 	if((state<images.length)&&(isloading)){
-		img.src = images[state];
-		//document.getElementById("slide").innerHTML+='<img class="thumbnail" src="'+ images[state] +'" />';
+		image.src = images[state];
 	}else{
 		isloading=false
 	}
 }
 loading()
 creatSlide();
-d=new Array();
+wormz=new Array();
 for(var yy=0;yy<20000;yy++){
-	d.push(new dot(Math.random()*width,Math.random()*height));
+	wormz.push(new worm(Math.random()*width,Math.random()*height));
 }
 ctx.fillStyle = "rgba(0, 0, 0, 1)";
 ctx.fillRect(0,0,width,height);
 
-function act(event) {
+function action(event) {
     event.preventDefault();
 	btnSlide.style.display="inline-block";
 	btnGenerate.innerHTML="<span>Regenerate</span>";
 	ctx.fillStyle = "rgba(0, 0, 0, 1)";
 	ctx.fillRect(0,0,width,height);		
-	spd=((speedControl.value*speedControl.value)*0.012)+speedControl.value*0;
-	mag=((influenceControl.value*influenceControl.value)*2)+influenceControl.value*0.0;
-	rdn=(randomControl.value*randomControl.value);
-	ras=(trailControl.value*trailControl.value*trailControl.value)/(spd);
-	num=((amountControl.value/2)*(amountControl.value/2)*0.001);	
-	cr=redControl.value;
-	cg=greenControl.value;
-	cb=blueControl.value;
+	speed=((speedControl.value*speedControl.value)*0.012)+speedControl.value*0;
+	influence=((influenceControl.value*influenceControl.value)*2)+influenceControl.value*0.0;
+	random=(randomControl.value*randomControl.value);
+	trail=(trailControl.value*trailControl.value*trailControl.value)/(speed);
+	amount=((amountControl.value/2)*(amountControl.value/2)*0.001);	
 	
-	for(var xx=0;xx<num;xx++){
-		d[xx].x=d[xx].y=width/2;
-		d[xx].lx=d[xx].ly=270;
+	componentRed=redControl.value;
+	componentGreen=greenControl.value;
+	componentBlue=blueControl.value;
+	
+	for(var xx=0;xx<amount;xx++){
+		wormz[xx].x=wormz[xx].y=width/2;
+		wormz[xx].lastX=wormz[xx].lastY=270;
 	}
 	if(int_id!=-1)
 	clearInterval(int_id);
 	int_id=setInterval(ani,30);
-	tim=-pos;	
+	timer=-position;	
 }
 
 function ani(){
-	spd=((speedControl.value*speedControl.value)*0.12)+speedControl.value*0.0;
-	mag=((influenceControl.value*influenceControl.value)*2)+influenceControl.value*0.0;
-	rdn=(randomControl.value*randomControl.value);
-	if(spd==0){
-		ras=0;
+	speed=((speedControl.value*speedControl.value)*0.12)+speedControl.value*0.0;
+	influence=((influenceControl.value*influenceControl.value)*2)+influenceControl.value*0.0;
+	random=(randomControl.value*randomControl.value);
+	if(speed==0){
+		trail=0;
 	}else{
-		ras=(trailControl.value*trailControl.value*trailControl.value)*(spd/1);
+		trail=(trailControl.value*trailControl.value*trailControl.value)*(speed/1);
 	}
-	num=((amountControl.value/2)*(amountControl.value/2)*0.001);		
-	cr=parseInt(redControl.value);
-	cg=parseInt(greenControl.value);
-	cb=parseInt(blueControl.value);
+	amount=((amountControl.value/2)*(amountControl.value/2)*0.001);		
+	componentRed=parseInt(redControl.value);
+	componentGreen=parseInt(greenControl.value);
+	componentBlue=parseInt(blueControl.value);
 	
-	if(cr>255)cr=255;
-	if(cr<0)cr=0;
-	if(cg>255)cg=255;
-	if(cg<0)cg=0;
-	if(cb>255)cb=255;
-	if(cb<0)cb=0;
-	/*if(tim%10==0){
-		timer.value=100/(new Date()-lastt);
-		lastt=new Date();
-	}*/
-	tim++;
-	if(tim>180){
+	timer++;
+	if(timer>180){
 		if(slide)
-			pos++;
-		if(pos>=imageData.length){pos=0;}
+			position++;
+		if(position>=imageData.length)position=0;
 		creatSlide()
-		tim=0;
+		timer=0;
 	}
-	ctx.fillStyle = "rgba(0, 0, 0, "+ras+")";
+	ctx.fillStyle = "rgba(0, 0, 0, "+trail+")";
 	ctx.fillRect(0,0,width,height);
-	var col=(parseInt(cb)+parseInt(cg)*256+parseInt(cr)*256*256).toString(16);		
+	var col=(parseInt(componentBlue)+parseInt(componentGreen)*256+parseInt(componentRed)*256*256).toString(16);		
 	while(col.length<6){
 		col="0".concat(col);
 	}
 	ctx.fillStyle = "#"+col;
 	ctx.strokeStyle = "#"+col;
-	for(var xx=0;xx<num;xx++){
-		d[xx].go();
-		d[xx].draw(col);
+	for(var xx=0;xx<amount;xx++){
+		wormz[xx].go();
+		wormz[xx].draw(col);
 	}
 }
