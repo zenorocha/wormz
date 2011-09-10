@@ -6,9 +6,9 @@ var Transfer;
 
 var imgContainer = document.getElementById("img-container");
 
-var imageDataTransfer
-var dataTransfer
-var imagesTransfer
+var imageDataTransfer;
+var dataTransfer;
+var imagesTransfer;
 
 var insert_position;
 var images = ["img/example-img-1.jpg", "img/example-img-2.jpg", "img/example-img-3.jpg", "img/example-img-4.jpg", "img/example-img-5.jpg"];
