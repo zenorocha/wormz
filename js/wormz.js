@@ -58,14 +58,18 @@ var px,py;
 /////
 
 
-function play_pause(e){
+function play_pause(e, event){
+	
+	event.preventDefault();
+	
 	if(slide){
-		e.innerHTML="<span>Play Slide</span>"
-		slide=false
+		e.innerHTML="<span>Play Slide</span>";
+		slide=false;
 	}else{
-		e.innerHTML="<span>Stop Slide</span>"
-		slide=true
+		e.innerHTML="<span>Stop Slide</span>";
+		slide=true;
 	}
+	
 }
 function creatSlide(){	
 	var groupHeight=26+82*images.length;
@@ -333,9 +337,10 @@ for(var yy=0;yy<20000;yy++){
 ctx.fillStyle = "rgba(0, 0, 0, 1)";
 ctx.fillRect(0,0,width,height);
 
-function act() {
-	btnSlide.style.display="inline-block"
-	btnGenerate.innerHTML="<span>Regenerate</span>"
+function act(event) {
+    event.preventDefault();
+	btnSlide.style.display="inline-block";
+	btnGenerate.innerHTML="<span>Regenerate</span>";
 	ctx.fillStyle = "rgba(0, 0, 0, 1)";
 	ctx.fillRect(0,0,width,height);		
 	spd=((speedControl.value*speedControl.value)*0.012)+speedControl.value*0;
