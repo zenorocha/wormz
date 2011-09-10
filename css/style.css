@@ -3,7 +3,7 @@ html, body, #wrap {
 }
 
 body {
-    background: url(../img/bg.jpg);
+    background: url(../img/primary-bg.jpg);
     text-align: center;
     margin: 0;
     font-family: 'CarnalaRegular', serif;
@@ -45,10 +45,12 @@ body > #wrap {
 	min-height: 100%;
 }
 
+/* --- Structure --- */
+
 #top {
     width: 100%;
     height: 55px;
-    background: url(../img/bg-header.jpg);
+    background: url(../img/secondary-bg.jpg);
     position: absolute;
     top: 0;
     left: 0;
@@ -57,15 +59,75 @@ body > #wrap {
     border-bottom: 2px solid #c4fa09;
 }
 
+#center {
+	display: block;
+	margin: 0px auto;
+	z-index: 3;
+	/*position: relative;*/
+	width: 620px;
+	height: 620px;
+	padding: 75px 0 50px 0;
+}
+
+#controls {
+	position: absolute;
+	top: 70px;
+	left: 0;
+	float: left;
+	display:block;
+	margin:10px;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+#img-slider {
+	background: url(../img/secondary-bg.jpg);
+	display:block;
+	margin: 5px 15px;
+	position: absolute;
+    top: 70px;
+    right: 0;
+    width: 90px;
+    height:auto;
+}
+
 #bottom {
     width: 100%;
     height: 35px;
-    background: url(../img/bg-header.jpg);
+    background: url(../img/secondary-bg.jpg);
     position: relative;
     z-index: 2;
     border-top: 2px solid #c4fa09;
 	margin-top: -37px;
 	clear:both;
+}
+
+/* --- Canvas --- */
+
+#container-canvas {
+	margin-left: 60px;
+	background: url(../img/secondary-bg.jpg);
+    width: 620px;
+    height: 620px;
+}
+
+#canvas {
+    display:block;
+    padding:10px;
+    width:600px;
+    height:600px;
+}
+
+/* --- Polyfill --- */
+
+.no-canvas #canvas {
+    background: url(../img/polyfill.jpg) no-repeat 10px 10px;
+}
+
+.no-canvas #img-slider {
+    display: none;
 }
 
 #bottom p {
@@ -90,18 +152,8 @@ body > #wrap {
     margin: 0 10px 0 0;
 }
 
-#all {
-	display: block;
-	margin: 0px auto;
-	z-index: 3;
-	/*position: relative;*/
-	width: 620px;
-	height: 620px;
-	padding: 75px 0 50px 0;
-}
-
 .bar {
-	background: url(../img/bg-header.jpg);
+	background: url(../img/secondary-bg.jpg);
 	display: block;
 	width: 210px;
 	height: 20px;
@@ -117,62 +169,61 @@ body > #wrap {
     margin: -10px 0 0 0;
 }
 
-.b{
-	float:right;
-	display: none;
-}
-#cont{
-	margin-left: 60px;
-	background: url(../img/bg-header.jpg);
-    width: 620px;
-    height: 620px;
-}
+/* --- Controls --- */
 
-#canvas {
-    display:block;
-    padding:10px;
-    width:600px;
-    height:600px;
-}
-
-.op{
+.controls-group {
 	display:block;
 	padding: 5px 0;
 }
-.gp{
-	position: absolute;
-	top: 70px;
-	left: 0;
-	float: left;
-	display:block;
-	margin:10px;
-	-moz-user-select: none;
-	-khtml-user-select: none;
-	-webkit-user-select: none;
-	user-select: none;
+
+/* --- Slider --- */
+
+.slider { 
+    background:#c4fa09;  
+    height: 2px; 
+    position: relative; 
+    cursor: pointer;
+    border: 1px solid #333;
+    width: 130px;
+    float: right; 
+    clear: right;
+    margin: 8px 10px 4px;
 }
 
-.gps{
-	background: url(../img/bg-header.jpg);
-	display:block;
-	margin: 5px 15px;
-	position: absolute;
-    top: 70px;
-    right: 0;
-    width: 90px;
-    height:auto;
+.handle { 
+    background: #fff; 
+    height: 12px;
+    width: 12px;
+    top: -5px;
+    position: absolute; 
+    display: block; 
+    cursor: move;
+    -moz-box-shadow: 0 0 6px #000;
+    -webkit-box-shadow: 0 0 6px #000;
+    box-shadow: 0 0 6px #000;
+    -moz-border-radius: 14px;
+    -webkit-border-radius: 14px;
+    border-radius: 14px;  
+
 }
 
-.gps p {
+.range {
+	display: none;
+}
+
+/* --- Image Slider --- */
+
+#img-slider p {
 	margin: 0;
 }
 
-#slide{
+#img-container {
 	display: block;
 	padding: 5px;
 	overflow: auto;
 }
-#group{
+
+#img-group{
 	display:block;
 	margin:auto;
 	-moz-user-select: none;
@@ -181,14 +232,7 @@ body > #wrap {
 	user-select: none;
 	padding: 10px 0;
 }
-#pp{
-	display:none;
-	margin-bottom: 10px;
-}
 
-#rtd {
-    margin: 0 10px 10px 5px;
-}
 .thumbnail{
 	display:block;
 	height: 48px;
@@ -247,6 +291,15 @@ body > #wrap {
 
 /* --- Button --- */
  
+#btn-slide {
+	display:none;
+	margin-bottom: 10px;
+}
+
+#btn-generate {
+    margin: 0 10px 10px 5px;
+}
+
 .btn {		
 	display: inline-block;
 	-webkit-border-radius: 8px;
@@ -299,51 +352,6 @@ body > #wrap {
 	transform: translate(0, 4px);
 }
 
-/* --- Slider --- */
-
-.slider { 
-    background:#c4fa09;  
-    height: 2px; 
-    position: relative; 
-    cursor: pointer;
-    border: 1px solid #333;
-    width: 130px;
-    float: right; 
-    clear: right;
-    margin: 8px 10px 4px;
-}
-
-.handle { 
-    background: #fff; 
-    height: 12px;
-    width: 12px;
-    top: -5px;
-    position: absolute; 
-    display: block; 
-    cursor: move;
-    -moz-box-shadow: 0 0 6px #000;
-    -webkit-box-shadow: 0 0 6px #000;
-    box-shadow: 0 0 6px #000;
-    -moz-border-radius: 14px;
-    -webkit-border-radius: 14px;
-    border-radius: 14px;  
-
-}
-
-.range {
-    width: 0;
-}
-
-/* --- Polyfill --- */
-
-.no-canvas #canvas {
-    background: url(../img/polyfill.jpg) no-repeat 10px 10px;
-}
-
-.no-canvas .gps {
-    display: none;
-}
-
 /* --- Fonts --- */
 
 @font-face {
@@ -369,9 +377,9 @@ body > #wrap {
 }
 
 .open-trash {
-	background: url("../img/lixo-vazio.png");
+	background: url("../img/open-trash.png");
 }
 
 .close-trash {
-	background: url("../img/lixo-cheio.png");
+	background: url("../img/close-trash.png");
 }

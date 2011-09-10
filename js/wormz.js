@@ -21,11 +21,14 @@ var randomControl = document.getElementById("random-control");
 var trailControl = document.getElementById("trail-control");
 var amountControl = document.getElementById("amount-control");
 
-var r_b = document.getElementById("r_b");
-var g_b = document.getElementById("g_b");
-var b_b = document.getElementById("b_b");
-var col_b = document.getElementById("col_b");
-var rtd = document.getElementById("rdt");
+// rgb vars
+var redControl = document.getElementById("red-control");
+var greenControl = document.getElementById("green-control");
+var blueControl = document.getElementById("blue-control");
+
+// button vars
+var btnGenerate = document.getElementById("btn-generate");
+var btnSlide = document.getElementById("btn-slide");
 
 var isloading=true	
 var int_id=-1;	
@@ -329,9 +332,10 @@ for(var yy=0;yy<20000;yy++){
 }
 ctx.fillStyle = "rgba(0, 0, 0, 1)";
 ctx.fillRect(0,0,width,height);
-function act(){
-	document.getElementById("pp").style.display="inline-block"
-	document.getElementById("rtd").innerHTML="<span>Regenerate</span>"
+
+function act() {
+	btnSlide.style.display="inline-block"
+	btnGenerate.innerHTML="<span>Regenerate</span>"
 	ctx.fillStyle = "rgba(0, 0, 0, 1)";
 	ctx.fillRect(0,0,width,height);		
 	spd=((speedControl.value*speedControl.value)*0.012)+speedControl.value*0;
@@ -339,9 +343,9 @@ function act(){
 	rdn=(randomControl.value*randomControl.value);
 	ras=(trailControl.value*trailControl.value*trailControl.value)/(spd);
 	num=((amountControl.value/2)*(amountControl.value/2)*0.001);	
-	cr=r_b.value;
-	cg=g_b.value;
-	cb=b_b.value;
+	cr=redControl.value;
+	cg=greenControl.value;
+	cb=blueControl.value;
 	
 	for(var xx=0;xx<num;xx++){
 		d[xx].x=d[xx].y=width/2;
@@ -363,9 +367,9 @@ function ani(){
 		ras=(trailControl.value*trailControl.value*trailControl.value)*(spd/1);
 	}
 	num=((amountControl.value/2)*(amountControl.value/2)*0.001);		
-	cr=parseInt(r_b.value);
-	cg=parseInt(g_b.value);
-	cb=parseInt(b_b.value);
+	cr=parseInt(redControl.value);
+	cg=parseInt(greenControl.value);
+	cb=parseInt(blueControl.value);
 	
 	if(cr>255)cr=255;
 	if(cr<0)cr=0;
