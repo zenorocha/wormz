@@ -1,23 +1,25 @@
-var width=600;
-var height=600;
+var width = 600;
+var height = 600;
 
 var slide=true	
 var cut;
 
+var imgContainer = document.getElementById("img-container");
+
 var imageDataCut
 var dataCut
 var imagesCut
-var container="group";
 
 var insert_pos;
-var images = ["img/a.jpg","img/bat.jpg","img/c.jpg","img/google.jpg","img/z.jpg"]
-//get a reference to the canvas
+var images = ["img/example-img-1.jpg", "img/example-img-2.jpg", "img/example-img-3.jpg", "img/example-img-4.jpg", "img/example-img-5.jpg"];
+
+// control vars
 var ctx = document.getElementById("canvas").getContext("2d");
-var spd_b = document.getElementById("spd_b");
-var mag_b = document.getElementById("mag_b");
-var rdn_b = document.getElementById("rdn_b");
-var ras_b = document.getElementById("ras_b");
-var num_b = document.getElementById("num_b");
+var speedControl = document.getElementById("speed-control");
+var influenceControl = document.getElementById("influence-control");
+var randomControl = document.getElementById("random-control");
+var trailControl = document.getElementById("trail-control");
+var amountControl = document.getElementById("amount-control");
 
 var r_b = document.getElementById("r_b");
 var g_b = document.getElementById("g_b");
@@ -72,8 +74,8 @@ function creatSlide(){
 			res+='<div data-pos='+i+' class="between"></div><img id=img'+i+' draggable="true" data-pos='+i+'  class="thumbnail" src="'+images[i]+'" />';
 	}
 	res+='<div data-pos='+images.length+' class="between"></div>';
-	document.getElementById(container).innerHTML=res	
-	document.getElementById(container).style.height=groupHeight;
+	document.getElementById("img-group").innerHTML=res	
+	document.getElementById("img-group").style.height=groupHeight;
 }
 function loadImage(file) {
 	f=file.files[0];
@@ -112,15 +114,16 @@ img.onload = function(){
 }
 
 document.addEventListener("dragenter", dragOut, false);
-document.getElementById("slide").addEventListener('dragstart', dragStart, false);
-document.getElementById("slide").addEventListener("dragend", dragEnd, false);
-document.getElementById("slide").addEventListener("dragenter", dragOver, false);
-document.getElementById("slide").addEventListener("dragover", noopHandler, false);
-document.getElementById("slide").addEventListener("drop", drop, false);
-document.getElementById("slide").addEventListener("click", click, false);
+
+imgContainer.addEventListener('dragstart', dragStart, false);
+imgContainer.addEventListener("dragend", dragEnd, false);
+imgContainer.addEventListener("dragenter", dragOver, false);
+imgContainer.addEventListener("dragover", noopHandler, false);
+imgContainer.addEventListener("drop", drop, false);
+imgContainer.addEventListener("click", click, false);
 
 function click (evt){
-	if(evt.target.id!="group"){	
+	if(evt.target.id!="img-group"){	
 		pos = evt.target.getAttribute("data-pos")
 		tim=0;
 		creatSlide()
@@ -129,8 +132,7 @@ function click (evt){
 	evt.preventDefault();
 }
 
-function dragOut(evt) {		
-	
+function dragOut(evt) {	
 	
 	document.getElementById("trash").className = "close-trash";
 	
@@ -162,7 +164,7 @@ function dragStart(evt){
 	evt.dataTransfer.setData('text/html', evt.target.src);
 }
 function dragOver(evt) {
-	if((evt.target.id!="group")&&(evt.target.id!="slide")){
+	if((evt.target.id!="img-group")&&(evt.target.id!="img-container")){
 		if(evt.target.id == "trash") {
 			document.getElementById("trash").className = "open-trash";
 		} else{ 	
@@ -180,8 +182,7 @@ function dragOver(evt) {
 				evt.target.className = "thumbnail hoverThumbnail";
 			}else{
 				evt.target.className = "between betweenHover";
-			}
-			
+			}			
 		}
 	}
 	evt.stopPropagation();
@@ -191,15 +192,16 @@ function drop(evt){
     console.log('drop '+evt.target.id);
 	evt.stopPropagation();
 	evt.preventDefault();	
-	
-	imagesCut=images[cut]
-	imageDataCut=imageData[cut]
-	dataCut=data[cut]
-	
-	images.splice(cut,1)
-	imageData.splice(cut,1)
-	data.splice(cut,1)
-	if((evt.target.id!="group")&&(evt.target.id!="slide")){
+	if(evt.dataTransfer.files.length==0){
+		imagesCut=images[cut]
+		imageDataCut=imageData[cut]
+		dataCut=data[cut]
+		
+		images.splice(cut,1)
+		imageData.splice(cut,1)
+		data.splice(cut,1)
+	}
+	if((evt.target.id!="img-group")&&(evt.target.id!="img-container")){
 		if(evt.target.id=="trash"){
 			
 		}else{	
@@ -208,7 +210,7 @@ function drop(evt){
 			}else{
 				var position=evt.target.getAttribute("data-pos")
 				if(position>cut)position--;
-				if((evt.target.className=="thumbnail")&&(cut!=evt.target.getAttribute("data-pos"))){
+				if((evt.target.className=="thumbnail hoverThumbnail")&&(cut!=evt.target.getAttribute("data-pos"))){
 					imageData.splice(cut,0,imageData[position])
 					data.splice(cut,0,data[position]);
 					images.splice(cut,0,images[position]);
@@ -332,11 +334,11 @@ function act(){
 	document.getElementById("rtd").innerHTML="<span>Regenerate</span>"
 	ctx.fillStyle = "rgba(0, 0, 0, 1)";
 	ctx.fillRect(0,0,width,height);		
-	spd=((spd_b.value*spd_b.value)*0.012)+spd_b.value*0;
-	mag=((mag_b.value*mag_b.value)*2)+mag_b.value*0.0;
-	rdn=(rdn_b.value*rdn_b.value);
-	ras=(ras_b.value*ras_b.value*ras_b.value)/(spd);
-	num=((num_b.value/2)*(num_b.value/2)*0.001);	
+	spd=((speedControl.value*speedControl.value)*0.012)+speedControl.value*0;
+	mag=((influenceControl.value*influenceControl.value)*2)+influenceControl.value*0.0;
+	rdn=(randomControl.value*randomControl.value);
+	ras=(trailControl.value*trailControl.value*trailControl.value)/(spd);
+	num=((amountControl.value/2)*(amountControl.value/2)*0.001);	
 	cr=r_b.value;
 	cg=g_b.value;
 	cb=b_b.value;
@@ -352,15 +354,15 @@ function act(){
 }
 
 function ani(){
-	spd=((spd_b.value*spd_b.value)*0.12)+spd_b.value*0.0;
-	mag=((mag_b.value*mag_b.value)*2)+mag_b.value*0.0;
-	rdn=(rdn_b.value*rdn_b.value);
+	spd=((speedControl.value*speedControl.value)*0.12)+speedControl.value*0.0;
+	mag=((influenceControl.value*influenceControl.value)*2)+influenceControl.value*0.0;
+	rdn=(randomControl.value*randomControl.value);
 	if(spd==0){
 		ras=0;
 	}else{
-		ras=(ras_b.value*ras_b.value*ras_b.value)*(spd/1);
+		ras=(trailControl.value*trailControl.value*trailControl.value)*(spd/1);
 	}
-	num=((num_b.value/2)*(num_b.value/2)*0.001);		
+	num=((amountControl.value/2)*(amountControl.value/2)*0.001);		
 	cr=parseInt(r_b.value);
 	cg=parseInt(g_b.value);
 	cb=parseInt(b_b.value);
@@ -376,7 +378,7 @@ function ani(){
 		lastt=new Date();
 	}*/
 	tim++;
-	if(tim>250){
+	if(tim>180){
 		if(slide)
 			pos++;
 		if(pos>=imageData.length){pos=0;}
