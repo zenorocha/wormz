@@ -104,6 +104,16 @@ body > #wrap {
 	clear:both;
 }
 
+/* --- Header --- */
+
+#html5-logo {
+    float: right;
+    margin: 5px 15px 0 0;
+    width: 32px;
+    height: 44px;
+    background: url(../img/html5-logo.png) no-repeat;
+}
+
 /* --- Canvas --- */
 
 #container-canvas {
@@ -130,35 +140,20 @@ body > #wrap {
     display: none;
 }
 
-#bottom p {
-    padding: 5px 15px;
-    margin-top: -4px;
-}
+/* --- Controls --- */
 
-.left {
-    float: left;
-}
-
-.right {
-    float: right;
-}
-
-#logo {
-    float: left;
-}
-
-#html5 {
-    float: right;
-    margin: 0 10px 0 0;
+.controls-group {
+	display:block;
+	padding: 5px 0;
 }
 
 .bar {
-	background: url(../img/secondary-bg.jpg);
-	display: block;
-	width: 210px;
-	height: 20px;
-	margin: 5px 0 5px 5px;
-	padding: 10px; 
+    background: url(../img/secondary-bg.jpg);
+    display: block;
+    width: 210px;
+    height: 20px;
+    margin: 5px 0 5px 5px;
+    padding: 10px; 
 }
 
 .bar label {
@@ -167,13 +162,6 @@ body > #wrap {
     text-transform: lowercase;
     font-size: 20px;
     margin: -10px 0 0 0;
-}
-
-/* --- Controls --- */
-
-.controls-group {
-	display:block;
-	padding: 5px 0;
 }
 
 /* --- Slider --- */
@@ -211,6 +199,69 @@ body > #wrap {
 	display: none;
 }
 
+/* --- Button --- */
+ 
+#btn-slide {
+    display:none;
+    margin-bottom: 10px;
+}
+
+#btn-generate {
+    margin: 0 10px 10px 5px;
+}
+
+.btn {      
+    display: inline-block;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 8px 0 #0a0a0a, 0 15px 20px rgba(0,0,0,.35);
+    -moz-box-shadow: 0 8px 0 #0a0a0a, 0 15px 20px rgba(0,0,0,.35);
+    box-shadow: 0 8px 0 #0a0a0a, 0 15px 20px rgba(0,0,0,.35);
+    -webkit-transition: -webkit-box-shadow .2s ease-in-out;
+    -moz-transition: -moz-box-shadow .2s ease-in-out;
+    -o-transition: -o-box-shadow .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out;
+}
+
+.btn span { 
+    display: inline-block;
+    color: #fff;
+    letter-spacing: 1px;
+    padding: 8px 18px 12px;
+    line-height: 1;
+    font-size: 19px;
+    text-shadow: 0 -1px 1px rgba(19,65,88,.8);
+    background: #000000;
+    background: -webkit-gradient(linear, 0% 0%, 0% 90%, from(#0a0a0a), to(#17171a));
+    background: -moz-linear-gradient(#0a0a0a, #17171a);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: inset 0 -1px 1px #0a0a0a;
+    -moz-box-shadow: inset 0 -1px 1px #0a0a0a;
+    box-shadow: inset 0 -1px 1px #0a0a0a;
+    -webkit-transition: -webkit-transform .2s ease-in-out;
+    -moz-transition: -moz-transform .2s ease-in-out;
+    -o-transition: -o-transform .2s ease-in-out;
+    transition: transform .2s ease-in-out;
+    display: none/inline/block/list-item/run-in/compact/marker;
+    
+}
+
+.btn:active {   
+    -webkit-box-shadow: 0 8px 0 #0a0a0a, 0 12px 10px rgba(0,0,0,.3);
+    -moz-box-shadow: 0 8px 0 #0a0a0a, 0 12px 10px rgba(0,0,0,.3);
+    box-shadow: 0 8px 0 #0a0a0a, 0 12px 10px rgba(0,0,0,.3);
+}
+
+.btn:active span {  
+    -webkit-transform: translate(0, 4px);
+    -moz-transform: translate(0, 4px);
+    -o-transform: translate(0, 4px);
+    transform: translate(0, 4px);
+}
+
 /* --- Image Slider --- */
 
 #img-slider p {
@@ -245,7 +296,6 @@ body > #wrap {
 	-webkit-transition: border 0.7s linear;
 	-moz-transition: border 0.7s linear;
 	transition: border 0.7s linear;
-	
 	-webkit-transition: height 0.1s ease-in-out;
 	-moz-transition: height 0.1s ease-in-out;
 	transition: height 0.1s ease-in-out;
@@ -289,67 +339,37 @@ body > #wrap {
 	user-select: none;
 }
 
-/* --- Button --- */
- 
-#btn-slide {
-	display:none;
-	margin-bottom: 10px;
+/* --- Trash --- */
+
+#trash{
+    display:block;
+    height: 55px;
+    width: 55px;
+    margin: 0 auto;
+    margin-bottom: 10px;
 }
 
-#btn-generate {
-    margin: 0 10px 10px 5px;
+.open-trash {
+    background: url("../img/open-trash.png");
 }
 
-.btn {		
-	display: inline-block;
-	-webkit-border-radius: 8px;
-	-moz-border-radius: 8px;
-	border-radius: 8px;
-	-webkit-box-shadow: 0 8px 0 #0a0a0a, 0 15px 20px rgba(0,0,0,.35);
-	-moz-box-shadow: 0 8px 0 #0a0a0a, 0 15px 20px rgba(0,0,0,.35);
-	box-shadow: 0 8px 0 #0a0a0a, 0 15px 20px rgba(0,0,0,.35);
-	-webkit-transition: -webkit-box-shadow .2s ease-in-out;
-	-moz-transition: -moz-box-shadow .2s ease-in-out;
-	-o-transition: -o-box-shadow .2s ease-in-out;
-	transition: box-shadow .2s ease-in-out;
+.close-trash {
+    background: url("../img/close-trash.png");
 }
 
-.btn span {	
-	display: inline-block;
-	color: #fff;
-	letter-spacing: 1px;
-	padding: 8px 18px 12px;
-	line-height: 1;
-	font-size: 19px;
-	text-shadow: 0 -1px 1px rgba(19,65,88,.8);
-	background: #000000;
-	background: -webkit-gradient(linear, 0% 0%, 0% 90%, from(#0a0a0a), to(#17171a));
-	background: -moz-linear-gradient(#0a0a0a, #17171a);
-	-webkit-border-radius: 8px;
-	-moz-border-radius: 8px;
-	border-radius: 8px;
-	-webkit-box-shadow: inset 0 -1px 1px #0a0a0a;
-	-moz-box-shadow: inset 0 -1px 1px #0a0a0a;
-	box-shadow: inset 0 -1px 1px #0a0a0a;
-	-webkit-transition: -webkit-transform .2s ease-in-out;
-	-moz-transition: -moz-transform .2s ease-in-out;
-	-o-transition: -o-transform .2s ease-in-out;
-	transition: transform .2s ease-in-out;
-	display: none/inline/block/list-item/run-in/compact/marker;
-	
+/* --- Footer --- */
+
+#bottom p {
+    padding: 5px 15px;
+    margin-top: -4px;
 }
 
-.btn:active {	
-	-webkit-box-shadow: 0 8px 0 #0a0a0a, 0 12px 10px rgba(0,0,0,.3);
-	-moz-box-shadow: 0 8px 0 #0a0a0a, 0 12px 10px rgba(0,0,0,.3);
-	box-shadow: 0 8px 0 #0a0a0a, 0 12px 10px rgba(0,0,0,.3);
+.left {
+    float: left;
 }
 
-.btn:active span {	
-	-webkit-transform: translate(0, 4px);
-	-moz-transform: translate(0, 4px);
-	-o-transform: translate(0, 4px);
-	transform: translate(0, 4px);
+.right {
+    float: right;
 }
 
 /* --- Fonts --- */
@@ -364,22 +384,4 @@ body > #wrap {
     font-weight: normal;
     font-style: normal;
 
-}
-
-/* --- Trash --- */
-
-#trash{
-	display:block;
-	height: 55px;
-	width: 55px;
-	margin: 0 auto;
-	margin-bottom: 10px;
-}
-
-.open-trash {
-	background: url("../img/open-trash.png");
-}
-
-.close-trash {
-	background: url("../img/close-trash.png");
 }
