@@ -375,11 +375,11 @@ a {
 
 @font-face {
     font-family: 'CarnalaRegular';
-    src: url('../fonts/carnala_beta-webfont.eot');
-    src: url('../fonts/carnala_beta-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/carnala_beta-webfont.woff') format('woff'),
-         url('../fonts/carnala_beta-webfont.ttf') format('truetype'),
-         url('../fonts/carnala_beta-webfont.svg#CarnalaRegular') format('svg');
+    src: url('../font/carnala_beta-webfont.eot');
+    src: url('../font/carnala_beta-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/carnala_beta-webfont.woff') format('woff'),
+         url('../font/carnala_beta-webfont.ttf') format('truetype'),
+         url('../font/carnala_beta-webfont.svg#CarnalaRegular') format('svg');
     font-weight: normal;
     font-style: normal;
 
