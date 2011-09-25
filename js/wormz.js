@@ -136,8 +136,7 @@ function click (evt){
 
 function dragOut(evt) {		
 	document.getElementById("trash").className = "close-trash";	
-	if(hoverElement) {
-		console.log('dragOut '+hoverElement.className );		
+	if(hoverElement) {		
 		if(hoverElement.className == "thumbnail hoverThumbnail"  || hoverElement.className == "thumbnail selectedThumbnail"){
 			hoverElement.className = "thumbnail";
 		}else{
@@ -189,7 +188,6 @@ function dragEnter(evt) {
 	evt.preventDefault();
 }
 function drop(evt){	
-    console.log('drop '+evt.target.id);
 	evt.stopPropagation();
 	evt.preventDefault();	
 	if(evt.dataTransfer.files.length==0){
