@@ -359,16 +359,16 @@ a {
 /* --- Footer --- */
 
 #bottom p {
-    padding: 5px 15px;
-    margin-top: -4px;
+    position: absolute;
+    bottom: 0;
 }
 
 .left {
-    float: left;
+    left: 15px;
 }
 
 .right {
-    float: right;
+    right: 15px;
 }
 
 /* --- Fonts --- */
