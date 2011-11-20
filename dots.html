@@ -1,0 +1,289 @@
+<html>
+<head>
+	<style type="text/css">
+		#all{
+			width:870px;
+			height:550px;
+			display:block;
+			margin: 0 auto;
+			background:#0A110A;
+			margin-top:100px;
+		}
+		.bar{
+			background:#232;
+			display:block;
+			width:280px;
+			margin:5px;
+			padding:5px; 
+			text-align:left;
+			font-weight: bold;
+		}
+		.b{
+			float:right;
+		}
+		#cont{
+			background:#000;
+			//position:relative;
+			//display:none;
+			display:block;
+			margin: 10px;
+			padding:10px;
+			width:500px;
+			height:500px;
+			float:left;
+		}
+		.op{
+			display:block;
+			padding:5px;
+		}
+		.gp{
+			float:right;
+			background:#000;
+			display:block;
+			width:310px;
+			margin:10px;
+		}
+		body {
+			text-align:center;
+			background:#000;
+		}
+	</style>	
+
+</head>
+<body >
+	<div id="all" >
+		<div id="cont" >
+			<canvas id="canvas" width="500" height="500" ></canvas>
+		</div>
+		<div class="gp" >
+			<div class="op" >
+				<div class="bar">SPEED<input class="b" id="spd_b" type="range"  min="0.5" max="10" value="5.0" step="0.1"/></div>
+				<div class="bar">EFFECT<input class="b" id="mag_b" type="range"  min="0.0" max="3" value="1.5" step="0.01"/></div>
+				<div class="bar">RANDOM<input class="b" id="rdn_b" type="range"  min="0.0" max="2" value="1.0" step="0.01" /></div>
+				<div class="bar">TRAIL<input class="b" id="ras_b" type="range"  min="0.15" max="0.8" value="0.5" step="0.01"/></div>
+				<div class="bar">AMOUNT<input class="b" id="num_b" type="range"  min="1" max="6000" value="3500" /></div>
+			</div>
+			<div class="op" >
+				<div class="bar">R<input class="b" id="r_b" type="range"  min="0" max="255" value="255" step="1"/></div>
+				<div class="bar">G<input class="b" id="g_b" type="range"  min="0" max="255" value="100" step="1"/></div>
+				<div class="bar">B<input class="b" id="b_b" type="range"  min="0" max="255" value="0" step="1" /></div>
+				<input id="rtd" type="submit" value="release the DOTs!"  ONCLICK="act()"/>
+			</div>
+			<div class="op" >				
+				<input id="timer" type="text"/>
+			</div>
+		</div>
+	</div>
+</body>
+
+	<script>
+	var images = ["a.jpg","b.jpg","c.jpg","d.jpg"]
+	//get a reference to the canvas
+	var ctx = document.getElementById("canvas").getContext("2d");
+	var spd_b = document.getElementById("spd_b");
+	var mag_b = document.getElementById("mag_b");
+	var rdn_b = document.getElementById("rdn_b");
+	var ras_b = document.getElementById("ras_b");
+	var num_b = document.getElementById("num_b");
+	
+	var r_b = document.getElementById("r_b");
+	var g_b = document.getElementById("g_b");
+	var b_b = document.getElementById("b_b");
+	var col_b = document.getElementById("col_b");
+	var rtd = document.getElementById("rdt");
+	
+	var timer = document.getElementById("timer");
+		
+	var int_id=-1;	
+	var img;
+	var data = new Array();
+	var imageData = new Array();
+	var na=8;
+	var pos=0;
+	var tim=-100;
+	var lastt=new Date();
+
+	////the chaos variables!
+	var spd=3;
+	var mag=5;
+	var color="#00FF00";
+	var rdn=0.5;
+	var ras=0.09;
+	var num=100;
+	
+	var cr=0;
+	var cg=0;
+	var cb=0;
+	var px,py;
+	/////
+	var angs=new Array();
+	for(var j=0;j<na;j++){			
+		var ang=((360+0)/(na))*j;
+		angs.push(Math.round(Math.cos(ang*Math.PI/180)*10));
+		angs.push(Math.round(Math.sin(ang*Math.PI/180)*10));
+	}
+	function go(){
+		this.lx=this.x;
+		this.ly=this.y;
+		var rx=ry=0;
+		var x= Math.round(this.x);
+		var y= Math.round(this.y);
+		//var p=(Math.round(this.y)+(Math.round(this.x)*img.width))*4;
+		var imdw=imageData[pos].width*4;
+		//if(Math.random()*4>1){
+			//for(var tt=10;tt<60;tt+=60){
+			if(data[pos][((y*imdw)+(x*4))]>100){
+				for(var j=0;j<na;j++){			
+					//var ang=((360+0)/(na))*j;
+					var px=angs[(j*2)];//Math.round(Math.cos(ang*Math.PI/180)*10);
+					var py=angs[(j*2)+1];//Math.round(Math.sin(ang*Math.PI/180)*10);
+					if(((x+px>0)&&(x+px<500))&&((y+py>0)&&(y+py<500))){	
+						var p=(((py+y)*(imdw)) + ((px+x)*4));
+						var ppp=data[pos][p];
+						rx+=(px/100)*((255-ppp)/200);
+						ry+=(py/100)*((255-ppp)/200); 					
+					}
+				}
+			}	
+			//}
+		//}
+		
+		this.vx+=rx*mag;
+		this.vy+=ry*mag;
+	
+		this.vx+=(Math.random()-0.5)*rdn;
+		this.vy+=(Math.random()-0.5)*rdn;
+		
+		var som=Math.sqrt((this.vx*this.vx)+(this.vy*this.vy));
+		this.vx/=som;
+		this.vy/=som;
+		
+		if((x<0)){
+			this.vx*=-1;
+			this.x=0;
+		}
+		if((x>500)){
+			this.vx*=-1;
+			this.x=500;
+		}
+		if((y<0)){
+			this.vy*=-1;
+			this.y=0;
+		}
+		if((y>500)){
+			this.vy*=-1;
+			this.y=500;
+		}	
+		this.x+=this.vx*spd*1.5;
+		this.y+=this.vy*spd*1.5;
+		
+		
+	}
+
+	function draw(col){
+		//ctx.fillStyle = "#"+col;
+		//ctx.fillRect(this.x,this.y,this.w,this.w);
+		//ctx.strokeStyle = "#"+col;
+		ctx.beginPath();ctx.moveTo(this.x,this.y);ctx.lineTo(this.lx,this.ly);ctx.closePath();ctx.stroke();
+	}
+
+	function dot(nx,ny){
+		this.x=this.lx=nx;
+		this.y=this.ly=ny;
+		this.vx=Math.random()-0.5;
+		this.vy=Math.random()-0.5;
+		this.c=color;
+		this.w=1;//Math.random()*1.0+1.0;
+		///metodos
+		this.draw=draw;
+		this.go=go;
+	}
+
+	img = new Image();
+	img.onload = function(){
+		ctx.drawImage(img, 0, 0);
+		imageData.push (ctx.getImageData(0, 0, canvas.width, canvas.height) );
+		data.push (imageData[pos].data );
+		pos++;
+		if(pos==3){
+			img.src = images[3];
+		}else if(pos==2){
+			img.src = images[2];
+		}else if(pos==1){
+			img.src = images[1];
+		}else{
+			d=new Array();//new dot(200,200);
+			//for(var xx=0;xx<40;xx++){
+				for(var yy=0;yy<20000;yy++){
+					//d.push(new dot(20+xx*12,20+yy*12));
+					d.push(new dot(Math.random()*500,Math.random()*500));
+				}
+			//}
+			ctx.fillStyle = "rgba(0, 0, 0, 1)";
+			ctx.fillRect(0,0,500,500);
+		}
+	}
+	img.src = images[0];
+	
+	function act(){
+		ctx.fillStyle = "rgba(0, 0, 0, 1)";
+		ctx.fillRect(0,0,500,500);		
+		spd=((spd_b.value*spd_b.value)*0.012)+spd_b.value*0;
+		mag=((mag_b.value*mag_b.value)*2)+mag_b.value*0.0;
+		rdn=(rdn_b.value*rdn_b.value);
+		ras=(ras_b.value*ras_b.value*ras_b.value)/(spd);
+		num=((num_b.value/2)*(num_b.value/2)*0.001);		
+		cr=r_b.value;
+		cg=g_b.value;
+		cb=b_b.value;
+		
+		for(var xx=0;xx<num;xx++){
+			d[xx].x=d[xx].y=250;
+			d[xx].lx=d[xx].ly=270;
+		}
+		if(int_id!=-1)
+			clearInterval(int_id);
+		int_id=setInterval(ani,30);
+		pos=0;
+		tim=-100;	
+	}
+
+	function ani(){
+		spd=((spd_b.value*spd_b.value)*0.12)+spd_b.value*0.0;
+		mag=((mag_b.value*mag_b.value)*2)+mag_b.value*0.0;
+		rdn=(rdn_b.value*rdn_b.value);
+		if(spd==0){
+			ras=0;
+		}else{
+			ras=(ras_b.value*ras_b.value*ras_b.value)*(spd/1);
+		}
+		num=((num_b.value/2)*(num_b.value/2)*0.001);		
+		cr=r_b.value;
+		cg=g_b.value;
+		cb=b_b.value;
+		
+		if(tim%10==0){
+			timer.value=10000/(new Date()-lastt);
+			lastt=new Date();
+		}		
+		tim++;
+		if(tim>250){
+			pos++;
+			if(pos>3){pos=0;}
+			tim=0;
+		}
+		ctx.fillStyle = "rgba(0, 0, 0, "+ras+")";
+		ctx.fillRect(0,0,500,500);
+		var col=(Number(cb)+Number(cg*256)+Number(cr*256*256)).toString(16);		
+		while(col.length<6){
+			col="0".concat(col);
+		}
+		ctx.fillStyle = "#"+col;
+		ctx.strokeStyle = "#"+col;
+		for(var xx=0;xx<num;xx++){
+			d[xx].go();
+			d[xx].draw(col);
+		}
+	}
+	</script>
+</html>
