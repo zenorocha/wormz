@@ -1,5 +1,6 @@
 <html>
 <head>
+	<title>DOTS - HTML5 canvas particles</title>
 	<style type="text/css">
 		#all{
 			width:870px;
@@ -57,7 +58,7 @@
 		</div>
 		<div class="gp" >
 			<div class="op" >
-				<div class="bar">SPEED<input class="b" id="spd_b" type="range"  min="0.5" max="10" value="5.0" step="0.1"/></div>
+				<div class="bar">SPEED<input class="b" id="spd_b" type="range"  min="0.5" max="10" value="3.0" step="0.1"/></div>
 				<div class="bar">EFFECT<input class="b" id="mag_b" type="range"  min="0.0" max="3" value="1.5" step="0.01"/></div>
 				<div class="bar">RANDOM<input class="b" id="rdn_b" type="range"  min="0.0" max="2" value="1.0" step="0.01" /></div>
 				<div class="bar">TRAIL<input class="b" id="ras_b" type="range"  min="0.15" max="0.8" value="0.5" step="0.01"/></div>
@@ -69,15 +70,12 @@
 				<div class="bar">B<input class="b" id="b_b" type="range"  min="0" max="255" value="0" step="1" /></div>
 				<input id="rtd" type="submit" value="release the DOTs!"  ONCLICK="act()"/>
 			</div>
-			<div class="op" >				
-				<input id="timer" type="text"/>
-			</div>
 		</div>
 	</div>
 </body>
 
 	<script>
-	var images = ["a.jpg","b.jpg","c.jpg","d.jpg"]
+	var images = ["images/a.jpg","images/b.jpg","images/c.jpg","images/d.jpg"]
 	//get a reference to the canvas
 	var ctx = document.getElementById("canvas").getContext("2d");
 	var spd_b = document.getElementById("spd_b");
@@ -92,7 +90,7 @@
 	var col_b = document.getElementById("col_b");
 	var rtd = document.getElementById("rdt");
 	
-	var timer = document.getElementById("timer");
+	//var frame = document.getElementById("frame");
 		
 	var int_id=-1;	
 	var img;
@@ -261,11 +259,12 @@
 		cr=r_b.value;
 		cg=g_b.value;
 		cb=b_b.value;
-		
+		/*
 		if(tim%10==0){
-			timer.value=10000/(new Date()-lastt);
+			frame.value=10000/(new Date()-lastt);
 			lastt=new Date();
 		}		
+		*/
 		tim++;
 		if(tim>250){
 			pos++;
